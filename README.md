@@ -1,4 +1,4 @@
-# NexusHR - HR Management System
+# Talentify
 
 A modern HR management and job seeker platform built with cutting-edge technologies.
 
@@ -33,8 +33,8 @@ A modern HR management and job seeker platform built with cutting-edge technolog
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/nexus-hr.git
-cd nexus-hr
+git clone https://github.com/tuanha1508/Talentify.git
+cd Talentify
 ```
 
 2. Install dependencies:
@@ -82,4 +82,4 @@ yarn build
 
 ## License
 
-MIT 
+MIT
