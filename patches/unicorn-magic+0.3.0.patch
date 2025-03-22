@@ -1,0 +1,11 @@
+diff --git a/node_modules/unicorn-magic/default.js b/node_modules/unicorn-magic/default.js
+index 7bd4088..16264fb 100644
+--- a/node_modules/unicorn-magic/default.js
++++ b/node_modules/unicorn-magic/default.js
+@@ -12,3 +12,6 @@ export async function delay({seconds, milliseconds} = {}) {
+ 		setTimeout(resolve, duration);
+ 	});
+ }
++
++export const toPath = (path) => path.toString();
++export default { toPath };

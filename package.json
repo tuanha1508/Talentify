@@ -1,0 +1,45 @@
+{
+  "name": "nexus-hr",
+  "version": "1.0.0",
+  "description": "A modern HR management and job seeker platform with a dark futuristic theme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && patch-package",
+    "vite:dev": "vite",
+    "vite:build": "vite build",
+    "vite:preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pinia/nuxt": "^0.10.1",
+    "@tanstack/vue-query": "^5.69.0",
+    "nuxt": "^3.10.2",
+    "pinia": "^3.0.1",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.11.2",
+    "@types/node": "^20.11.24",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@volar/typescript": "^2.0.0",
+    "autoprefixer": "^10.4.18",
+    "globby": "^11.1.0",
+    "patch-package": "^8.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "vue-tsc": "^2.2.8"
+  },
+  "overrides": {
+    "globby": "^11.1.0"
+  }
+}
