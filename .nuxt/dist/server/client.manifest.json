@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "E:/Talentify/node_modules/nuxt/dist/app/entry.js": {
+  "E:/Vortexify/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "E:/Talentify/node_modules/nuxt/dist/app/entry.js"
+    "file": "E:/Vortexify/node_modules/nuxt/dist/app/entry.js"
   }
 }

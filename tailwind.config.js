@@ -67,8 +67,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Audiowide', 'Outfit', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -81,6 +81,9 @@ module.exports = {
         'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
         'gradient-shift': 'gradientShift 8s ease infinite alternate',
         'fadeSlideUp': 'fadeSlideUp 0.5s ease-out forwards',
+        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+        'text-shimmer': 'textShimmer 3s ease-in-out infinite',
+        'float-rotate': 'floatRotate 10s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -116,6 +119,35 @@ module.exports = {
           '0%': { transform: 'translateY(10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        glowPulse: {
+          '0%, 100%': { 
+            boxShadow: '0 0 8px rgba(94, 106, 210, 0.3)',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
+          },
+          '50%': { 
+            boxShadow: '0 0 20px rgba(94, 106, 210, 0.5)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          },
+        },
+        textShimmer: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        floatRotate: {
+          '0%, 100%': { 
+            transform: 'translateY(0) rotate(0deg)'
+          },
+          '25%': { 
+            transform: 'translateY(-5px) rotate(1deg)'
+          },
+          '50%': { 
+            transform: 'translateY(-10px) rotate(0deg)'
+          },
+          '75%': { 
+            transform: 'translateY(-5px) rotate(-1deg)'
+          },
+        },
       },
       borderRadius: {
         'sm': '4px',
@@ -130,6 +162,8 @@ module.exports = {
         'linear-lg': '0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.03)',
         'glow': '0 0 15px rgba(94, 106, 210, 0.5)',
         'glow-sm': '0 0 8px rgba(94, 106, 210, 0.3)',
+        'glow-lg': '0 0 25px rgba(94, 106, 210, 0.5), 0 0 5px rgba(137, 87, 229, 0.3)',
+        'neon': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #5E6AD2, 0 0 20px #5E6AD2, 0 0 25px #5E6AD2',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

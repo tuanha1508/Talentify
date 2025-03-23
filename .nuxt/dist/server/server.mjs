@@ -1,1 +1,1 @@
-export { default } from "file:///E:/Talentify/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///E:/Vortexify/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
