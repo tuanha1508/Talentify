@@ -9,12 +9,10 @@
     <div class="container mx-auto flex h-12 items-center justify-between px-4 md:px-8 bg-gradient-to-r from-dark-950/90 via-dark-900/90 to-dark-950/90">
       <!-- Logo -->
       <div class="flex items-center">
-        <div class="mr-3 h-8 w-8 rounded-lg bg-primary-500/30 p-1.5 shadow-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-full w-full text-primary-300">
-            <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-          </svg>
+        <div class="flex items-center justify-center h-8 w-8 mr-2"> <!-- Adjusted height/width and added centering -->
+          <img src="/images/logo.svg" alt="Talentify Logo" class="h-full w-full" />
         </div>
-        <h1 class="text-lg font-semibold text-white tracking-wide font-display">NexusHR</h1>
+        <h1 class="text-lg font-semibold text-white tracking-wide font-display">Talentify</h1> <!-- Removed flex items-center -->
       </div>
 
       <!-- Main Navigation -->
@@ -40,43 +38,6 @@
 
       <!-- Controls -->
       <div class="flex items-center gap-2">
-        <!-- Theme Toggler -->
-        <button 
-          @click="toggleDarkMode" 
-          class="mr-1 rounded-full p-1.5 text-gray-400 transition-colors hover:bg-dark-800/70 hover:text-white"
-        >
-          <svg 
-            v-if="isDarkMode" 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke-width="1.5" 
-            stroke="currentColor" 
-            class="h-5 w-5"
-          >
-            <path 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" 
-            />
-          </svg>
-          <svg 
-            v-else 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke-width="1.5" 
-            stroke="currentColor" 
-            class="h-5 w-5"
-          >
-            <path 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" 
-            />
-          </svg>
-        </button>
-
         <!-- Sign In Button -->
         <NuxtLink to="/sign-in" class="mr-2 hidden text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white md:block">Sign In</NuxtLink>
 
@@ -162,15 +123,6 @@ const visible = ref(true);
 const lastScrollPosition = ref(0);
 const scrollThreshold = 10;
 
-// Dark mode state (you may want to use a store for this in a real app)
-const isDarkMode = ref(true);
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value;
-  // You would update your app's theme here
-  document.documentElement.classList.toggle('light');
-  document.documentElement.classList.toggle('dark', isDarkMode.value);
-};
-
 // Mobile menu state
 const isMobileMenuOpen = ref(false);
 
@@ -225,6 +177,10 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.btn-primary {
+  @apply bg-primary-500 text-white hover:bg-primary-400;
+}
+
 .btn-sm {
   @apply rounded-lg px-4 py-1.5 text-sm font-medium;
 }
@@ -267,4 +223,4 @@ a:not(.no-underline):hover::after {
 .shadow-glow-md {
   box-shadow: 0 0 12px 0 rgba(110, 231, 183, 0.4);
 }
-</style> 
+</style>

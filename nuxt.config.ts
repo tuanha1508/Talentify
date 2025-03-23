@@ -6,36 +6,42 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
   ],
+
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
+
   // Tailwind configuration using the module options pattern
   // @ts-ignore - Type declaration issue with Tailwind module
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
     configPath: 'tailwind.config.js',
   },
+
   app: {
     head: {
-      title: 'HR Management System',
+      title: 'Talentify',
       meta: [
         { name: 'description', content: 'A futuristic HR management and job seeker platform' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/svg+xml', href: '/images/logo.svg' }
       ]
     }
   },
+
   // TypeScript configuration
   typescript: {
     strict: true,
     shim: false
   },
+
   // Vue configuration
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.includes('-')
     }
   },
+
   // Vite configuration
   vite: {
     optimizeDeps: {
@@ -59,5 +65,7 @@ export default defineNuxtConfig({
         overlay: true
       }
     }
-  }
-}) 
+  },
+
+  compatibilityDate: '2025-03-22'
+})

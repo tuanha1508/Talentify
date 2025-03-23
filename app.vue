@@ -79,10 +79,6 @@ html, body {
   @apply bg-dark-950 text-white;
 }
 
-.light {
-  @apply bg-white text-dark-950;
-}
-
 *:focus {
   @apply outline-primary-500 outline-2;
 }
