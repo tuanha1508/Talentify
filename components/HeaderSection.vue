@@ -78,10 +78,10 @@
         </button>
 
         <!-- Sign In Button -->
-        <a href="#" class="mr-2 hidden text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white md:block">Sign In</a>
+        <NuxtLink to="/sign-in" class="mr-2 hidden text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white md:block">Sign In</NuxtLink>
 
         <!-- Sign Up Button -->
-        <a href="#" class="btn-primary btn-xs shadow-glow-sm hover:shadow-glow-md transition-all duration-300 no-underline">Sign Up</a>
+        <NuxtLink to="/sign-up" class="btn-primary btn-xs shadow-glow-sm hover:shadow-glow-md transition-all duration-300 no-underline">Sign Up</NuxtLink>
 
         <!-- Mobile Menu Toggle -->
         <button 
@@ -145,7 +145,7 @@
             <a href="#contact" @click="handleNavClick" class="block text-sm text-gray-400 transition-colors hover:text-white">About</a>
           </li>
           <li class="border-t border-dark-800/30 pt-4">
-            <a href="#" class="block text-sm text-gray-400 transition-colors hover:text-white no-underline">Sign In</a>
+            <NuxtLink to="/sign-in" class="block text-sm text-gray-400 transition-colors hover:text-white no-underline">Sign In</NuxtLink>
           </li>
         </ul>
       </div>

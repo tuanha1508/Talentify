@@ -10,8 +10,8 @@
         Our AI-powered platform connects the right talent with the right opportunities, making hiring simpler and more effective.
       </p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        <button class="btn-primary btn-xs">Sign Up</button>
-        <button class="btn-outline btn-xs">For Employers</button>
+        <NuxtLink to="/sign-up" class="btn-primary btn-xs no-underline">Sign Up</NuxtLink>
+        <NuxtLink to="/sign-in" class="btn-outline btn-xs no-underline">Sign In</NuxtLink>
       </div>
       
       <!-- Floating transparent elements -->
