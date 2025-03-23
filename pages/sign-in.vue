@@ -136,17 +136,21 @@
                     class="text-gray-300 hover:text-white transition-all duration-200 transform hover:scale-110"
                     :disabled="socialLoading === 'linkedin'"
                   >
-                    <svg v-if="socialLoading === 'linkedin'" class="h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <svg v-if="socialLoading === 'linkedin'" class="h-9 w-9 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="10" cy="12" r="12" stroke="currentColor" stroke-width="4"></circle>
                       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <svg class="w-6 h-6" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13" cy="12" r="12" fill="#0A66C2"/>
-                        <g fill="#FFFFFF">
-                            <rect x="8" y="10" width="2" height="7" />
-                            <circle cx="9" cy="7.5" r="1.2" />
-                            <path d="M12,10v7h2v-3.5c0-0.8,0.2-1.5,1.2-1.5c1,0,1.2,0.7,1.2,1.5v3.5h2v-3.8c0-1.8-0.4-3.2-2.4-3.2c-1,0-1.7,0.5-1.9,1h0V10H12z" />
-                        </g>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+                      <!-- Circle background instead of rounded square -->
+                      <circle cx="20" cy="20" r="20" fill="#0A66C2"/>
+                      
+                      <!-- The "i" character - scaled and repositioned for new viewBox -->
+                      <path d="M13.33 31.67h-5v-18.33h5v18.33z" fill="white"/>
+                      <!-- The dot above "i" -->
+                      <path d="M10.83 11.22c-1.61 0-2.92-1.32-2.92-2.94s1.31-2.94 2.92-2.94 2.92 1.32 2.92 2.94-1.31 2.94-2.92 2.94z" fill="white"/>
+                      
+                      <!-- The "n" character - scaled and repositioned for new viewBox -->
+                      <path d="M33.33 31.67h-5v-9.34c0-5.61-6.67-5.19-6.67 0v9.34h-5v-18.33h5v2.94c2.33-4.31 11.67-4.63 11.67 4.13v11.26z" fill="white"/>
                     </svg>
                     <span class="sr-only">Sign in with LinkedIn</span>
                   </button>
