@@ -9,7 +9,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare || true && patch-package || true",
+    "postinstall": "node -e \"try { require('fs').appendFileSync('./node_modules/unicorn-magic/default.js', '\\n\\nexport default {};'); console.log('Fixed unicorn-magic'); } catch (e) { console.log('Could not fix unicorn-magic:', e.message); }\" && patch-package || true",
     "vite:dev": "vite",
     "vite:build": "vite build",
     "vite:preview": "vite preview",
@@ -39,10 +39,15 @@
     "vite": "^5.1.4",
     "vue-tsc": "^2.2.8"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "overrides": {
-    "globby": "11.1.0"
+    "globby": "11.1.0",
+    "unicorn-magic": "0.3.0"
   },
   "resolutions": {
-    "globby": "11.1.0"
+    "globby": "11.1.0",
+    "unicorn-magic": "0.3.0"
   }
 }

@@ -2,13 +2,9 @@ diff --git a/node_modules/unicorn-magic/default.js b/node_modules/unicorn-magic/
 index 7bd4088..16264fb 100644
 --- a/node_modules/unicorn-magic/default.js
 +++ b/node_modules/unicorn-magic/default.js
-@@ -12,3 +12,9 @@ export async function delay({seconds, milliseconds} = {}) {
+@@ -12,3 +12,5 @@ export async function delay({seconds, milliseconds} = {}) {
  		setTimeout(resolve, duration);
  	});
  }
 +
-+// Safe export that won't cause duplicate declaration issues
-+let _toPath;
-+try { _toPath = (path) => path.toString(); } catch (e) {}
-+
-+export default { toPath: _toPath };
++export default {};
