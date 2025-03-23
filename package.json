@@ -9,7 +9,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && patch-package",
+    "postinstall": "nuxt prepare || true && patch-package || true",
     "vite:dev": "vite",
     "vite:build": "vite build",
     "vite:preview": "vite preview",

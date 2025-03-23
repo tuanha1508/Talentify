@@ -1,20 +1,9 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "build": {
-    "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096"
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
-  "installCommand": "npm ci"
+  "framework": "nuxt",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".output",
+  "installCommand": "npm install --no-package-lock",
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
 } 
