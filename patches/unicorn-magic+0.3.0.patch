@@ -7,5 +7,6 @@ index 7bd4088..16264fb 100644
  	});
  }
 +
-+export const toPath = (path) => path.toString();
++// Only add toPath if it doesn't exist already
++if (typeof toPath === 'undefined') export const toPath = (path) => path.toString();
 +export default { toPath };
