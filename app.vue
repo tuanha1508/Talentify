@@ -14,6 +14,17 @@
 import BackgroundVideo from '~/components/BackgroundVideo.vue';
 import HeaderSection from '~/components/HeaderSection.vue';
 import { onMounted } from 'vue';
+import { useHead } from 'nuxt/app';
+
+// Add Google Fonts
+useHead({
+  link: [
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap',
+    }
+  ]
+});
 
 // Add smooth scrolling behavior
 onMounted(() => {
@@ -27,7 +38,7 @@ onMounted(() => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         window.scrollTo({
-          top: targetElement.offsetTop - 80, // Offset for header
+          top: targetElement.offsetTop - 60, // Offset for header
           behavior: 'smooth'
         });
         

@@ -1,17 +1,17 @@
 <template>
-  <section class="relative min-h-screen overflow-hidden pt-16">
+  <section class="relative min-h-screen overflow-hidden pt-8">
     <!-- Main hero content and draggable elements -->
-    <div class="container relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center md:px-8">
-      <span class="linear-badge-blue mb-4 inline-block">Future-Ready HR Platform</span>
-      <h1 class="mb-6 max-w-4xl bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+    <div class="container relative z-10 flex min-h-screen flex-col items-center px-4 py-16 text-center md:px-8" style="padding-top: 5rem;">
+      <span class="linear-badge-blue mb-2 inline-block">Future-Ready HR Platform</span>
+      <h1 class="mb-5 max-w-4xl bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
         Streamline Your <span class="text-primary-400">Talent Acquisition</span> Process
       </h1>
-      <p class="mb-8 max-w-xl text-gray-400">
+      <p class="mb-6 max-w-xl text-gray-400">
         Our AI-powered platform connects the right talent with the right opportunities, making hiring simpler and more effective.
       </p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        <button class="btn-primary">Find Jobs</button>
-        <button class="btn-outline">For Employers</button>
+        <button class="btn-primary btn-xs">Sign Up</button>
+        <button class="btn-outline btn-xs">For Employers</button>
       </div>
       
       <!-- Floating transparent elements -->
