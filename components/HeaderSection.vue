@@ -9,10 +9,10 @@
     <div class="container mx-auto flex h-12 items-center justify-between px-4 md:px-8 bg-gradient-to-r from-dark-950/90 via-dark-900/90 to-dark-950/90">
       <!-- Logo -->
       <div class="flex items-center">
-        <div class="flex items-center justify-center h-8 w-8 mr-2"> <!-- Adjusted height/width and added centering -->
-          <img src="/images/logo.svg" alt="Talentify Logo" class="h-full w-full" />
+        <div class="mr-1 h-10 w-10 flex items-center">
+          <img src="/images/logo.svg" alt="Vortexify Logo" class="h-full w-full" />
         </div>
-        <h1 class="text-lg font-semibold text-white tracking-wide font-display">Talentify</h1> <!-- Removed flex items-center -->
+        <h1 class="text-lg font-semibold text-white tracking-wide font-display flex items-center">Vortexify</h1>
       </div>
 
       <!-- Main Navigation -->

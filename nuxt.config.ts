@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Talentify',
+      title: 'Vortexify',
       meta: [
         { name: 'description', content: 'A futuristic HR management and job seeker platform' }
       ],

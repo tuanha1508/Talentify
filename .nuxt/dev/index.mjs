@@ -1008,7 +1008,7 @@ const _ooqtTGFY5tE5XSTqpeenLJWRvGBErOSNJTXApDR1o = (function(nitro) {
 
 const rootDir = "E:/Talentify";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"A futuristic HR management and job seeker platform"}],"link":[{"rel":"icon","type":"image/svg+xml","href":"/images/logo.svg"}],"style":[],"script":[],"noscript":[],"title":"Talentify"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"A futuristic HR management and job seeker platform"}],"link":[{"rel":"icon","type":"image/svg+xml","href":"/images/logo.svg"}],"style":[],"script":[],"noscript":[],"title":"Vortexify"};
 
 const appRootTag = "div";
 
