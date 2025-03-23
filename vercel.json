@@ -1,8 +1,5 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".output/public",
-  "installCommand": "npm install --no-package-lock",
-  "env": {
-    "NODE_OPTIONS": "--max-old-space-size=4096"
-  }
+  "installCommand": "npm install --legacy-peer-deps --no-audit",
+  "outputDirectory": ".output/public"
 } 
