@@ -7,12 +7,8 @@
         <!-- Company Info -->
         <div>
           <div class="flex items-center">
-            <div class="mr-3 h-8 w-8 rounded-lg bg-primary-500/20 p-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-full w-full text-primary-400">
-                <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-white">NexusHR</h3>
+            <img src="/images/logo.svg" alt="Vortexify Logo" class="h-10 w-10 mb-3" />
+            <h3 class="text-lg font-semibold text-white">Vortexify</h3>
           </div>
           <p class="mt-4 text-gray-400">Our AI-powered platform connects the right talent with the right opportunities, making hiring simpler and more effective.</p>
           <div class="mt-6 flex space-x-4">
@@ -105,8 +101,8 @@
       </div>
       
       <!-- Copyright -->
-      <div class="mt-12 border-t border-dark-800 pt-8 text-center">
-        <p class="text-sm text-gray-500">© 2025 NexusHR. All rights reserved.</p>
+      <div class="mt-8 border-t border-gray-800 pt-8 text-center">
+        <p class="text-sm text-gray-500">© 2025 Vortexify. All rights reserved.</p>
       </div>
     </div>
   </footer>

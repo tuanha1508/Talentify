@@ -14,8 +14,8 @@
         </p>
         
         <div class="mt-10 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
-          <button class="btn-primary min-w-[180px]">Create Account</button>
-          <button class="btn-outline min-w-[180px]">Schedule Demo</button>
+          <button class="btn-primary min-w-[180px] text-center flex items-center justify-center">Create Account</button>
+          <button class="btn-outline min-w-[180px] text-center flex items-center justify-center">Schedule Demo</button>
         </div>
         
         <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -51,7 +51,7 @@
               </svg>
             </div>
             <h3 class="mb-2 text-lg font-semibold text-white">Schedule a Demo</h3>
-            <p class="text-gray-400">Book a time that works for you</p>
+            <p class="text-gray-400">Book time that works for you</p>
             <a href="#" class="mt-4 inline-block text-sm text-accent-green hover:text-accent-green/80">Book now</a>
           </div>
         </div>

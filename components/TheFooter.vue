@@ -5,7 +5,7 @@
         <div>
           <div class="flex items-center gap-2 mb-6">
             <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-primary-400 to-secondary-600"></div>
-            <span class="text-xl font-bold text-white">NexusHR</span>
+            <span class="text-xl font-bold text-white">Vortexify</span>
           </div>
           <p class="text-gray-400 mb-4">
             Your gateway to future-ready talent acquisition and career advancement.
@@ -69,7 +69,7 @@
       </div>
       
       <div class="mt-12 pt-8 border-t border-dark-700 text-center text-gray-500">
-        <p>&copy; {{ new Date().getFullYear() }} NexusHR. All rights reserved.</p>
+        <p>&copy; {{ new Date().getFullYear() }} Vortexify. All rights reserved.</p>
       </div>
     </div>
   </footer>

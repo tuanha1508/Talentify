@@ -10,7 +10,7 @@
         Our AI-powered platform connects the right talent with the right opportunities, making hiring simpler and more effective.
       </p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 animate-fadeSlideUp opacity-0" style="animation-delay: 0.5s;">
-        <NuxtLink to="/sign-up" class="cta-button btn-primary btn-xs no-underline group relative overflow-hidden">
+        <NuxtLink to="/sign-up" class="cta-button btn-primary btn-lg no-underline group relative overflow-hidden">
           <span class="relative z-10">Get Started</span>
           <span class="absolute inset-0 bg-gradient-to-r from-secondary-600 to-secondary-500 group-hover:scale-105 transition-transform duration-300"></span>
           <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-secondary-300 to-transparent opacity-50 group-hover:animate-shine"></span>
@@ -347,5 +347,9 @@ const stopDrag = () => {
   .animate-shine {
     animation: none !important;
   }
+}
+
+.btn-lg {
+  @apply rounded-lg px-6 py-2.5 text-base font-medium;
 }
 </style> 

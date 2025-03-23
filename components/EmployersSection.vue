@@ -104,7 +104,11 @@
               </li>
             </ul>
             
-            <button class="btn-accent-green mt-4">Start Hiring</button>
+            <NuxtLink to="/sign-up" class="btn-primary btn-lg cta-button mt-6 inline-block group relative overflow-hidden no-underline">
+              <span class="relative z-10">Start Hiring</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-accent-green to-accent-green/80 group-hover:scale-105 transition-transform duration-300"></span>
+              <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-white to-transparent opacity-50 group-hover:animate-shine"></span>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -118,4 +122,35 @@
 
 <style scoped>
 /* Additional component styling */
+.btn-primary {
+  @apply bg-gradient-to-r from-accent-green to-accent-green/80 hover:from-accent-green/90 hover:to-accent-green/70 text-white shadow-sm hover:shadow-glow-sm transform hover:-translate-y-0.5;
+}
+
+.btn-lg {
+  @apply rounded-lg px-6 py-2.5 text-base font-medium;
+}
+
+.cta-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.025em;
+  font-weight: 600;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(63, 185, 80, 0.25);
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shine {
+  animation: shine 3s infinite linear;
+}
 </style> 
