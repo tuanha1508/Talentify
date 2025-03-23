@@ -9,7 +9,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "node -e \"try { require('fs').appendFileSync('./node_modules/unicorn-magic/default.js', '\\n\\nexport default {};'); console.log('Fixed unicorn-magic'); } catch (e) { console.log('Could not fix unicorn-magic:', e.message); }\" && patch-package || true",
+    "postinstall": "node -e \"try { const fs = require('fs'); const path = require('path'); const modulePath = path.resolve('./node_modules/unicorn-magic/default.js'); if (fs.existsSync(modulePath)) { fs.writeFileSync(modulePath, 'export async function delay({seconds, milliseconds} = {}) { const duration = (seconds || 0) * 1000 + (milliseconds || 0); return new Promise((resolve) => { setTimeout(resolve, duration); }); }\\n'); console.log('Fixed unicorn-magic'); } } catch (e) { console.log('Could not fix unicorn-magic:', e.message); }\"",
     "vite:dev": "vite",
     "vite:build": "vite build",
     "vite:preview": "vite preview",
@@ -34,7 +34,6 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@volar/typescript": "^2.0.0",
     "autoprefixer": "^10.4.18",
-    "patch-package": "^8.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.4",
     "vue-tsc": "^2.2.8"

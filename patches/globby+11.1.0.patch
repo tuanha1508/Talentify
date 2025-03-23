@@ -1,5 +1,0 @@
-'use strict';
-const {globby} = require('./globby');
-
-module.exports = globby;
-// TODO: Remove this for the next major release 
