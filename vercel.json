@@ -1,7 +1,6 @@
 {
-  "framework": "nuxt",
   "buildCommand": "npm run build",
-  "outputDirectory": ".output",
+  "outputDirectory": ".output/public",
   "installCommand": "npm install --no-package-lock",
   "env": {
     "NODE_OPTIONS": "--max-old-space-size=4096"
