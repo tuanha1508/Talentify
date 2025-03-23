@@ -6,11 +6,17 @@
       enter-from-class="opacity-0 scale-95"
       enter-to-class="opacity-100 scale-100"
     >
-      <div class="w-full max-w-md mx-auto px-4 mt-20">
+      <div class="w-full max-w-md mx-auto px-4 mt-12">
         <div class="mx-auto">
-          <div class="mb-3 text-center">
-            <h1 class="mb-1 font-display text-2xl font-medium text-white">Create Account</h1>
-            <p class="text-sm text-gray-400">Join our platform and start your journey</p>
+          <div class="mb-4 text-center">
+            <NuxtLink to="/" class="inline-flex items-center text-xs text-primary-400 hover:text-primary-300 transition-colors mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3">
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+              </svg>
+              Back to Home
+            </NuxtLink>
+            <h1 class="mb-1 font-display text-2xl font-medium text-white">Create Your Account</h1>
+            <p class="text-sm text-gray-400">Join our community of developers and recruiters</p>
           </div>
           
           <div class="rounded-lg border border-primary-800/40 bg-gradient-to-b from-surface/90 to-surface-raised/90 p-6 shadow-lg shadow-black/20 backdrop-blur-md relative overflow-hidden">
@@ -313,19 +319,17 @@ const handleSignUp = async () => {
   
   try {
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // In a real app, you would call your auth service here
-    // const response = await authService.signUp(firstName.value, lastName.value, email.value, password.value);
-    
-    console.log('User signed up:', {
+    // Success! In a real app, you would save the user or token to storage
+    console.log('User registered:', {
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value
     });
     
     // Redirect after successful registration
-    router.push('/sign-in');
+    router.push('/');
     
   } catch (error) {
     console.error('Sign up error:', error);
@@ -347,11 +351,10 @@ const handleSocialSignUp = async (provider) => {
     // In a real app, you would call your auth service here
     // const response = await authService.socialSignUp(provider);
     
-    console.log(`User signed up with ${provider}`);
+    console.log('Social sign up with:', provider);
     
-    // Redirect after successful registration - in real app, might go straight to dashboard
-    router.push('/dashboard');
-    
+    // Redirect after successful registration
+    router.push('/');
   } catch (error) {
     console.error(`${provider} sign up error:`, error);
   } finally {

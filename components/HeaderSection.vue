@@ -8,13 +8,13 @@
   >
     <div class="container mx-auto flex h-12 items-center justify-between px-4 md:px-8 bg-gradient-to-r from-dark-950/90 via-dark-900/90 to-dark-950/90 border-b border-white/5">
       <!-- Logo -->
-      <div class="flex items-center">
+      <NuxtLink to="/" class="flex items-center group cursor-pointer">
         <div class="mr-1 h-10 w-10 flex items-center relative group">
           <img src="/images/logo.svg" alt="Vortexify Logo" class="h-full w-full relative z-10 group-hover:scale-110 transition-transform duration-300" />
           <div class="absolute inset-0 bg-secondary-500/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <h1 class="text-lg font-semibold text-white tracking-wide font-display flex items-center bg-gradient-to-r from-white via-secondary-300 to-white bg-clip-text text-transparent animate-text-shimmer bg-[length:200%_auto]">Vortexify</h1>
-      </div>
+      </NuxtLink>
 
       <!-- Main Navigation -->
       <nav class="hidden items-center md:flex">

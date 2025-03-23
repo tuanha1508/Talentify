@@ -3,10 +3,10 @@
     <div class="container">
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div class="flex items-center gap-2 mb-6">
+          <NuxtLink to="/" class="flex items-center gap-2 mb-6">
             <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-primary-400 to-secondary-600"></div>
             <span class="text-xl font-bold text-white">Vortexify</span>
-          </div>
+          </NuxtLink>
           <p class="text-gray-400 mb-4">
             Your gateway to future-ready talent acquisition and career advancement.
           </p>

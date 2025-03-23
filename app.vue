@@ -4,7 +4,7 @@
     <HeaderSection />
     <main>
       <NuxtLayout>
-        <NuxtPage />
+        <NuxtPage :key="$route.fullPath" />
       </NuxtLayout>
     </main>
   </div>
@@ -13,8 +13,11 @@
 <script setup>
 import BackgroundVideo from '~/components/BackgroundVideo.vue';
 import HeaderSection from '~/components/HeaderSection.vue';
-import { onMounted } from 'vue';
-import { useHead } from 'nuxt/app';
+import { onMounted, onBeforeUnmount } from 'vue';
+import { useHead, useRoute } from 'nuxt/app';
+
+// Get route
+const route = useRoute();
 
 // Add Google Fonts
 useHead({
@@ -26,32 +29,40 @@ useHead({
   ]
 });
 
-// Add smooth scrolling behavior
-onMounted(() => {
+// Setup and cleanup event listeners
+const setupEventListeners = () => {
   // Smooth scroll to anchors
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 60, // Offset for header
-          behavior: 'smooth'
-        });
-        
-        // Add entrance animation class to the target section
-        targetElement.classList.add('section-animate');
-        setTimeout(() => {
-          targetElement.classList.remove('section-animate');
-        }, 1000);
-      }
-    });
+    anchor.addEventListener('click', handleAnchorClick);
   });
 
   // Apply entrance animations to sections when they become visible
+  initSectionObserver();
+};
+
+// Handle anchor clicks
+const handleAnchorClick = function(e) {
+  e.preventDefault();
+  const targetId = this.getAttribute('href');
+  if (targetId === '#') return;
+  
+  const targetElement = document.querySelector(targetId);
+  if (targetElement) {
+    window.scrollTo({
+      top: targetElement.offsetTop - 60, // Offset for header
+      behavior: 'smooth'
+    });
+    
+    // Add entrance animation class to the target section
+    targetElement.classList.add('section-animate');
+    setTimeout(() => {
+      targetElement.classList.remove('section-animate');
+    }, 1000);
+  }
+};
+
+// Initialize IntersectionObserver for sections
+const initSectionObserver = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -64,6 +75,18 @@ onMounted(() => {
   // Observe all sections
   document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
+  });
+};
+
+// Add smooth scrolling behavior
+onMounted(() => {
+  setupEventListeners();
+});
+
+// Cleanup
+onBeforeUnmount(() => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.removeEventListener('click', handleAnchorClick);
   });
 });
 </script>

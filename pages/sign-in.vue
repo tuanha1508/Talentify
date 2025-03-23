@@ -9,6 +9,12 @@
       <div class="w-full max-w-md mx-auto px-4 mt-20">
         <div class="mx-auto">
           <div class="mb-5 text-center">
+            <NuxtLink to="/" class="inline-flex items-center text-xs text-primary-400 hover:text-primary-300 transition-colors mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3">
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+              </svg>
+              Back to Home
+            </NuxtLink>
             <h1 class="mb-1 font-display text-2xl font-medium text-white">Welcome Back</h1>
             <p class="text-sm text-gray-400">Log in to access your account</p>
           </div>
@@ -241,8 +247,8 @@ const handleSignIn = async () => {
       rememberMe: rememberMe.value
     });
     
-    // Redirect after successful login
-    router.push('/dashboard');
+    // Redirect after successful login (replace with your actual dashboard path)
+    router.push('/');
     
   } catch (error) {
     console.error('Sign in error:', error);
@@ -274,5 +280,10 @@ const handleSocialSignIn = async (provider) => {
   } finally {
     socialLoading.value = '';
   }
+};
+
+// Go back to home page
+const goToHome = () => {
+  router.push('/');
 };
 </script> 
