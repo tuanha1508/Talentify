@@ -392,7 +392,7 @@ const stopDrag = () => {
 
 .dragging {
   @apply shadow-xl shadow-cyan-500/25 scale-[1.02] -translate-y-1 z-[60];
-  transition: none !important;
+  transition: transform 60ms ease-out, box-shadow 150ms ease-out;
 }
 
 /* Animation delay utilities */
