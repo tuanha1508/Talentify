@@ -1,19 +1,22 @@
 <template>
   <section class="relative min-h-screen overflow-hidden pt-8">
     <!-- Main hero content and draggable elements -->
-    <div class="container relative z-10 flex min-h-screen flex-col items-center px-4 py-16 text-center md:px-8" style="padding-top: 5rem;">
-      <span class="linear-badge-blue mb-2 inline-block animate-fadeSlideUp opacity-0" style="animation-delay: 0.1s;">Future-Ready HR Platform</span>
+    <div class="container relative z-10 flex min-h-screen flex-col items-center px-4 py-16 text-center md:px-8 pt-20">
+      <span class="linear-badge-blue mb-2 inline-block animate-fadeSlideUp opacity-0 delay-100">Future-Ready HR Platform</span>
       <h1 class="mb-5 max-w-4xl bg-gradient-to-r from-white via-secondary-300 to-gray-400 bg-clip-text bg-[length:200%_auto] animate-gradient-shift text-transparent">
         Streamline Your <span class="text-primary-400 relative inline-block animate-float">Talent Acquisition</span> Process
       </h1>
-      <p class="mb-6 max-w-xl text-gray-400 animate-fadeSlideUp opacity-0" style="animation-delay: 0.3s;">
-        Our AI-powered platform connects the right talent with the right opportunities, making hiring simpler and more effective.
+      <p class="mb-6 max-w-xl text-gray-400 animate-fadeSlideUp opacity-0 delay-300">
+        Unite talent with opportunity through our AI-powered platform. Revolutionize hiring with precision matching, data-driven insights, and seamless collaboration.
       </p>
-      <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 animate-fadeSlideUp opacity-0" style="animation-delay: 0.5s;">
-        <NuxtLink to="/sign-up" class="cta-button btn-primary btn-lg no-underline group relative overflow-hidden">
-          <span class="relative z-10">Get Started</span>
-          <span class="absolute inset-0 bg-gradient-to-r from-secondary-600 to-secondary-500 group-hover:scale-105 transition-transform duration-300"></span>
-          <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-secondary-300 to-transparent opacity-50 group-hover:animate-shine"></span>
+      <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 animate-fadeSlideUp opacity-0 delay-500">
+        <NuxtLink to="/sign-up" class="animated-border-button group relative overflow-hidden px-8 py-3.5 text-base rounded-2xl bg-dark-900/80 backdrop-blur-md flex items-center">
+          <span class="relative z-10 font-medium flex items-center text-white">
+            <div class="mr-2 w-5 h-5 flex items-center justify-center relative">
+              <img src="/images/logo.svg" alt="Vortexify Logo" class="h-full w-full relative z-10" />
+            </div>
+            Get Started
+          </span>
         </NuxtLink>
       </div>
       
@@ -21,8 +24,7 @@
       <!-- User card floating element -->
       <div 
         ref="userCardElement" 
-        class="glass draggable cursor-move absolute w-64 max-w-xs rounded-xl p-4 md:block shadow-linear-lg backdrop-blur-xl border border-white/10 animate-float"
-        style="animation-delay: 0.2s;"
+        class="glass draggable cursor-move absolute w-64 max-w-xs rounded-xl p-4 md:block shadow-lg shadow-secondary-500/10 backdrop-blur-xl border border-white/10 animate-float bg-dark-900/40 delay-200"
         :style="{ top: userCardPosition.y + 'px', left: userCardPosition.x + 'px' }"
         @mousedown="(e) => startDrag(e, 'userCard')"
         @touchstart="(e) => startDrag(e, 'userCard')"
@@ -57,8 +59,7 @@
       <!-- Job recommendations floating element -->
       <div 
         ref="jobRecsElement" 
-        class="glass draggable cursor-move absolute w-60 max-w-xs rounded-xl p-4 md:block shadow-linear-lg backdrop-blur-xl border border-white/10 animate-float"
-        style="animation-delay: 0.5s;"
+        class="glass draggable cursor-move absolute w-64 max-w-xs rounded-xl p-4 md:block shadow-lg shadow-secondary-500/10 backdrop-blur-xl border border-white/10 animate-float bg-dark-900/40 delay-500"
         :style="{ top: jobRecsPosition.y + 'px', left: jobRecsPosition.x + 'px' }"
         @mousedown="(e) => startDrag(e, 'jobRecs')"
         @touchstart="(e) => startDrag(e, 'jobRecs')"
@@ -90,8 +91,7 @@
       <!-- Stats floating card -->
       <div 
         ref="statsElement" 
-        class="glass draggable cursor-move absolute w-64 rounded-xl p-4 md:block shadow-linear-lg backdrop-blur-xl border border-white/10 animate-float"
-        style="animation-delay: 0.8s;"
+        class="glass draggable cursor-move absolute w-64 max-w-xs rounded-xl p-4 md:block shadow-lg shadow-secondary-500/10 backdrop-blur-xl border border-white/10 animate-float bg-dark-900/40 delay-800"
         :style="{ top: statsPosition.y + 'px', left: statsPosition.x + 'px' }"
         @mousedown="(e) => startDrag(e, 'stats')"
         @touchstart="(e) => startDrag(e, 'stats')"
@@ -123,8 +123,7 @@
       <!-- Draggable notification floating element (bottom right) -->
       <div 
         ref="notificationElement" 
-        class="glass draggable cursor-move absolute rounded-xl p-3 lg:block shadow-linear-lg backdrop-blur-xl border border-white/10 animate-float"
-        style="animation-delay: 1s;"
+        class="glass draggable cursor-move absolute w-64 max-w-xs rounded-xl p-4 md:block shadow-lg shadow-secondary-500/10 backdrop-blur-xl border border-white/10 animate-float bg-dark-900/40 delay-1000"
         :style="{ top: notificationPosition.y + 'px', left: notificationPosition.x + 'px' }"
         @mousedown="(e) => startDrag(e, 'notification')"
         @touchstart="(e) => startDrag(e, 'notification')"
@@ -145,7 +144,7 @@
       <!-- Background elements -->
       <div class="absolute inset-0 -z-10 bg-grid-pattern opacity-5"></div>
       <div class="absolute top-1/4 left-1/4 -z-10 h-64 w-64 rounded-full bg-secondary-500/10 filter blur-3xl animate-pulse-slow"></div>
-      <div class="absolute bottom-1/4 right-1/4 -z-10 h-64 w-64 rounded-full bg-accent-purple/10 filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+      <div class="absolute bottom-1/4 right-1/4 -z-10 h-64 w-64 rounded-full bg-accent-purple/10 filter blur-3xl animate-pulse-slow delay-1500"></div>
     </div>
   </section>
 </template>
@@ -240,6 +239,27 @@ const startDrag = (event, target) => {
     y: clientY - currentPosition.y
   };
   
+  // Add active class for better visual feedback during dragging
+  let targetElement;
+  switch(target) {
+    case 'notification':
+      targetElement = notificationElement.value;
+      break;
+    case 'userCard':
+      targetElement = userCardElement.value;
+      break;
+    case 'jobRecs':
+      targetElement = jobRecsElement.value;
+      break;
+    case 'stats':
+      targetElement = statsElement.value;
+      break;
+  }
+  
+  if (targetElement) {
+    targetElement.classList.add('dragging');
+  }
+  
   event.preventDefault();
 };
 
@@ -255,25 +275,73 @@ const onDrag = (event) => {
     y: clientY - offset.value.y
   };
   
+  // Add smooth interpolation to prevent jittery movement
+  let currentPosition;
+  switch(currentDragTarget.value) {
+    case 'notification':
+      currentPosition = notificationPosition.value;
+      break;
+    case 'userCard':
+      currentPosition = userCardPosition.value;
+      break;
+    case 'jobRecs':
+      currentPosition = jobRecsPosition.value;
+      break;
+    case 'stats':
+      currentPosition = statsPosition.value;
+      break;
+  }
+  
+  // Apply smooth position update (linear interpolation)
+  const smoothFactor = 0.85; // Lower for more smoothing, higher for more direct
+  
+  const smoothedPosition = {
+    x: currentPosition.x + (newPosition.x - currentPosition.x) * smoothFactor,
+    y: currentPosition.y + (newPosition.y - currentPosition.y) * smoothFactor
+  };
+  
   // Update the position of the current dragged element
   switch(currentDragTarget.value) {
     case 'notification':
-      notificationPosition.value = newPosition;
+      notificationPosition.value = smoothedPosition;
       break;
     case 'userCard':
-      userCardPosition.value = newPosition;
+      userCardPosition.value = smoothedPosition;
       break;
     case 'jobRecs':
-      jobRecsPosition.value = newPosition;
+      jobRecsPosition.value = smoothedPosition;
       break;
     case 'stats':
-      statsPosition.value = newPosition;
+      statsPosition.value = smoothedPosition;
       break;
   }
 };
 
 // Stop dragging
 const stopDrag = () => {
+  if (!isDragging.value) return;
+  
+  // Remove active class when dragging stops
+  let targetElement;
+  switch(currentDragTarget.value) {
+    case 'notification':
+      targetElement = notificationElement.value;
+      break;
+    case 'userCard':
+      targetElement = userCardElement.value;
+      break;
+    case 'jobRecs':
+      targetElement = jobRecsElement.value;
+      break;
+    case 'stats':
+      targetElement = statsElement.value;
+      break;
+  }
+  
+  if (targetElement) {
+    targetElement.classList.remove('dragging');
+  }
+  
   isDragging.value = false;
   currentDragTarget.value = null;
 };
@@ -281,75 +349,79 @@ const stopDrag = () => {
 
 <style scoped>
 .draggable {
-  user-select: none;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  z-index: 50;
+  @apply select-none transition-all duration-300 ease-in-out z-50 cursor-grab active:cursor-grabbing;
+  will-change: transform, box-shadow;
 }
 
 .draggable:hover {
-  box-shadow: 0 8px 25px rgba(94, 106, 210, 0.15);
-  transform: translateY(-2px) scale(1.01);
+  @apply shadow-lg shadow-cyan-500/15 transform -translate-y-1 scale-[1.01];
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.draggable:active {
+  @apply shadow-xl shadow-cyan-500/20 scale-[0.99] -translate-y-0.5;
+  transition-duration: 150ms;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.dragging {
+  @apply shadow-xl shadow-cyan-500/25 scale-[1.02] -translate-y-1 z-[60];
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
 }
 
-@keyframes shine {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
+/* Animation delay utilities */
+.delay-100 {
+  animation-delay: 0.1s;
 }
 
-.cta-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: 0.025em;
-  font-weight: 600;
+.delay-200 {
+  animation-delay: 0.2s;
 }
 
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(94, 106, 210, 0.25);
+.delay-300 {
+  animation-delay: 0.3s;
 }
 
-.bg-grid-pattern {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
+.delay-500 {
+  animation-delay: 0.5s;
 }
 
-.animate-shine {
-  animation: shine 3s infinite linear;
+.delay-800 {
+  animation-delay: 0.8s;
 }
 
-/* Avoid animation for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .animate-pulse,
-  .animate-pulse-slow,
-  .animate-fadeSlideUp,
-  .animate-gradient-shift,
-  .animate-shine {
-    animation: none !important;
-  }
+.delay-1000 {
+  animation-delay: 1s;
 }
 
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+/* All animation and button styles have been moved to main.css */
 .btn-lg {
   @apply rounded-lg px-6 py-2.5 text-base font-medium;
+}
+
+.animated-border-button {
+  @apply relative;
+}
+
+.animated-border-button::before {
+  @apply content-[''] absolute inset-0 rounded-[inherit] p-[1px];
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-rotate 3s linear infinite;
+  background-size: 300% 100%;
+}
+
+@keyframes border-rotate {
+  0% {
+    @apply bg-[position:0%_0];
+  }
+  100% {
+    @apply bg-[position:300%_0];
+  }
 }
 </style> 

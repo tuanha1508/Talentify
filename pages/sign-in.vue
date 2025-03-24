@@ -68,14 +68,15 @@
                 <button 
                   key="submit-button"
                   type="submit" 
-                  class="w-full flex justify-center py-2 px-4 bg-primary-500 hover:bg-primary-600 text-white rounded-md text-sm font-medium shadow transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/20"
+                  class="w-full flex justify-center py-2.5 px-4 relative overflow-hidden bg-gradient-to-r from-indigo-600 to-violet-500 hover:from-indigo-500 hover:to-violet-400 text-white rounded-md text-sm font-medium shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/20 border border-white/10"
                   :disabled="isLoading"
                 >
                   <svg v-if="isLoading" class="mr-2 h-4 w-4 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  {{ isLoading ? 'Signing In...' : 'Sign In' }}
+                  <span class="relative z-10">{{ isLoading ? 'Signing In...' : 'Sign In' }}</span>
+                  <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-indigo-300 to-transparent opacity-70 group-hover:animate-shine"></span>
                 </button>
                 
                 <div key="divider" class="flex items-center my-1 transition-all duration-300 ease-out opacity-100 transform translate-y-0">
@@ -88,7 +89,7 @@
                   <button 
                     type="button" 
                     @click="handleSocialSignIn('google')"
-                    class="text-gray-300 hover:text-white transition-all duration-200 transform hover:scale-110"
+                    class="relative group p-2 rounded-full bg-dark-900/70 hover:bg-dark-800/80 text-gray-300 hover:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/20"
                     :disabled="socialLoading === 'google'"
                   >
                     <svg v-if="socialLoading === 'google'" class="h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -102,6 +103,7 @@
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                     </svg>
                     <span class="sr-only">Sign in with Google</span>
+                    <span class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 bg-gradient-to-r from-indigo-600/20 to-indigo-400/20 group-hover:opacity-100"></span>
                   </button>
                   
                   <button 

@@ -20,33 +20,33 @@
       <nav class="hidden items-center md:flex">
         <ul class="flex space-x-8 font-display">
           <li>
-            <a href="#" @click="handleNavClick" class="text-sm font-medium text-white hover:text-primary-300 transition-all duration-200 relative group">
+            <NuxtLink to="/" class="text-sm font-medium text-white hover:text-primary-300 transition-all duration-200 relative group">
               Home
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
-            </a>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+            </NuxtLink>
           </li>
           <li>
             <a href="#features" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               Features
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
           <li>
             <a href="#job-seekers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               Find Jobs
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
           <li>
             <a href="#employers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               For Recruiters
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
           <li>
             <a href="#contact" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               About
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
         </ul>
@@ -57,20 +57,27 @@
         <!-- Sign In Button -->
         <NuxtLink to="/sign-in" class="mr-2 hidden text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white relative group md:block">
           Sign In
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-400 group-hover:w-full transition-all duration-300"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
         </NuxtLink>
 
         <!-- Sign Up Button -->
-        <NuxtLink to="/sign-up" class="btn-primary btn-xs shadow-glow-sm hover:shadow-glow-md transition-all duration-300 no-underline relative group overflow-hidden">
-          <span class="relative z-10">Sign Up</span>
-          <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-secondary-300 to-transparent opacity-50 group-hover:animate-shine"></span>
+        <NuxtLink to="/sign-up" class="nav-button-no-float relative overflow-hidden rounded-xl pulse-button">
+          <span class="relative z-10 flex items-center shimmer-text">
+            Sign Up
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </span>
+          <span class="absolute inset-0 bg-[#111]"></span>
+          <span class="absolute inset-0 rounded-xl border border-white pulse-border slide-border"></span>
         </NuxtLink>
 
         <!-- Mobile Menu Toggle -->
         <button 
           @click="isMobileMenuOpen = !isMobileMenuOpen" 
-          class="ml-2 rounded-full p-1.5 text-gray-400 transition-colors hover:bg-dark-800/70 hover:text-white md:hidden relative overflow-hidden group"
+          class="ml-2 rounded-full p-1.5 text-gray-400 transition-all duration-300 hover:bg-dark-800/70 hover:text-white md:hidden relative overflow-hidden group"
         >
+          <span class="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
           <svg 
             v-if="!isMobileMenuOpen" 
             xmlns="http://www.w3.org/2000/svg" 
@@ -101,7 +108,6 @@
               d="M6 18L18 6M6 6l12 12" 
             />
           </svg>
-          <div class="absolute inset-0 bg-dark-800/0 group-hover:bg-dark-800/70 transition-colors duration-300"></div>
         </button>
       </div>
     </div>
@@ -114,22 +120,22 @@
       <div class="container mx-auto px-4 py-4">
         <ul class="space-y-4">
           <li>
-            <a href="#" @click="handleNavClick" class="block text-sm text-white hover:text-primary-400 transition-all duration-200 pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">Home</a>
+            <NuxtLink to="/" @click="handleNavClick" class="block text-sm text-white hover:text-primary-400 transition-all duration-200 pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Home</NuxtLink>
           </li>
           <li>
-            <a href="#features" @click="handleNavClick" class="block text-sm text-gray-400 transition-colors hover:text-white pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">Features</a>
+            <a href="#features" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Features</a>
           </li>
           <li>
-            <a href="#job-seekers" @click="handleNavClick" class="block text-sm text-gray-400 transition-colors hover:text-white pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">Find Jobs</a>
+            <a href="#job-seekers" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Find Jobs</a>
           </li>
           <li>
-            <a href="#employers" @click="handleNavClick" class="block text-sm text-gray-400 transition-colors hover:text-white pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">For Recruiters</a>
+            <a href="#employers" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">For Recruiters</a>
           </li>
           <li>
-            <a href="#contact" @click="handleNavClick" class="block text-sm text-gray-400 transition-colors hover:text-white pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">About</a>
+            <a href="#contact" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">About</a>
           </li>
           <li class="border-t border-dark-800/30 pt-4">
-            <NuxtLink to="/sign-in" class="block text-sm text-gray-400 transition-colors hover:text-white no-underline pl-2 border-l-2 border-transparent hover:border-secondary-500 hover:pl-3">Sign In</NuxtLink>
+            <NuxtLink to="/sign-in" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white no-underline pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Sign In</NuxtLink>
           </li>
         </ul>
       </div>
@@ -212,16 +218,5 @@ onUnmounted(() => {
   @apply rounded-lg px-3 py-1 text-xs font-medium;
 }
 
-@keyframes shine {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shine {
-  animation: shine 3s infinite linear;
-}
+/* All modern-nav-button styles have been moved to main.css */
 </style>

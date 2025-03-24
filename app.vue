@@ -93,8 +93,7 @@ onBeforeUnmount(() => {
 
 <style>
 html, body {
-  @apply bg-dark-950 text-white;
-  @apply antialiased;
+  @apply bg-dark-950 text-white antialiased;
   scroll-behavior: smooth;
 }
 
@@ -108,35 +107,25 @@ html, body {
 
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.3s;
+  @apply transition-all duration-300;
 }
 .page-enter-from,
 .page-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
+  @apply opacity-0 translate-y-5;
 }
 
-:root {
-  --color-primary: #5E6AD2;
-  --color-secondary: #6EE7B7;
-  --color-accent-purple: #A78BFA;
-  --color-accent-green: #10B981;
-}
-
+/* Custom container class already defined with Tailwind */
 .container {
   @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
 /* Section animations */
 section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  @apply opacity-0 translate-y-8 transition-all duration-500 ease-out;
 }
 
 section.section-visible {
-  opacity: 1;
-  transform: translateY(0);
+  @apply opacity-100 translate-y-0;
 }
 
 .section-animate {
@@ -144,8 +133,8 @@ section.section-visible {
 }
 
 @keyframes sectionFocus {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% { @apply scale-100; }
+  50% { @apply scale-[1.02]; }
+  100% { @apply scale-100; }
 }
 </style>

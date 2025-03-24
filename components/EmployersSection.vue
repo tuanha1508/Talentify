@@ -104,10 +104,27 @@
               </li>
             </ul>
             
-            <NuxtLink to="/sign-up" class="btn-primary btn-lg cta-button mt-6 inline-block group relative overflow-hidden no-underline">
-              <span class="relative z-10">Start Hiring</span>
-              <span class="absolute inset-0 bg-gradient-to-r from-accent-green to-accent-green/80 group-hover:scale-105 transition-transform duration-300"></span>
-              <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-white to-transparent opacity-50 group-hover:animate-shine"></span>
+            <div>
+              <a href="/" class="btn-outline inline-flex items-center gap-2 no-underline group">
+                <span>Learn More</span> 
+                <span class="group-hover:translate-x-0.5 transition-transform duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+            
+            <NuxtLink to="/sign-up" class="modern-cta-button-green mt-6 inline-block group relative overflow-hidden no-underline px-7 py-3 text-base hover:scale-[1.03] rounded-2xl">
+              <span class="relative z-10 font-medium flex items-center text-emerald-100 group-hover:text-accent-green transition-colors duration-300">
+                Join as Employer
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-all duration-300">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+              <span class="absolute inset-0 bg-black group-hover:bg-black/90 transition-all duration-300"></span>
+              <span class="absolute -inset-x-full bottom-0 h-px w-[200%] bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent opacity-70 animate-shine"></span>
+              <span class="absolute inset-0 rounded-2xl border border-accent-green"></span>
             </NuxtLink>
           </div>
         </div>
@@ -121,36 +138,14 @@
 </script>
 
 <style scoped>
-/* Additional component styling */
+.bg-grid-pattern {
+  @apply bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px];
+}
+
 .btn-primary {
-  @apply bg-gradient-to-r from-accent-green to-accent-green/80 hover:from-accent-green/90 hover:to-accent-green/70 text-white shadow-sm hover:shadow-glow-sm transform hover:-translate-y-0.5;
+  @apply bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-teal-300 hover:to-cyan-400 text-white border-none;
 }
 
-.btn-lg {
-  @apply rounded-lg px-6 py-2.5 text-base font-medium;
-}
-
-.cta-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: 0.025em;
-  font-weight: 600;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(63, 185, 80, 0.25);
-}
-
-@keyframes shine {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shine {
-  animation: shine 3s infinite linear;
-}
+/* All modern-cta-button styles have been moved to main.css */
+/* Use the modern-cta-button-green class from main.css for green buttons */
 </style> 
