@@ -168,6 +168,8 @@ const statsPosition = ref({ x: 0, y: 0 });
 const isDragging = ref(false);
 const currentDragTarget = ref(null);
 const offset = ref({ x: 0, y: 0 });
+const lastMousePosition = ref({ x: 0, y: 0 });
+const animationFrameId = ref(null);
 
 // Initialize element positions
 onMounted(() => {
@@ -270,12 +272,26 @@ const onDrag = (event) => {
   const clientX = event.clientX || (event.touches && event.touches[0].clientX);
   const clientY = event.clientY || (event.touches && event.touches[0].clientY);
   
+  // Store the mouse position for use in animation frame
+  lastMousePosition.value = { x: clientX, y: clientY };
+  
+  // If we don't have an animation frame yet, request one
+  if (!animationFrameId.value) {
+    animationFrameId.value = requestAnimationFrame(updatePosition);
+  }
+};
+
+// Update position in animation frame for smoother movement
+const updatePosition = () => {
+  animationFrameId.value = null;
+  
+  if (!isDragging.value) return;
+  
   const newPosition = {
-    x: clientX - offset.value.x,
-    y: clientY - offset.value.y
+    x: lastMousePosition.value.x - offset.value.x,
+    y: lastMousePosition.value.y - offset.value.y
   };
   
-  // Add smooth interpolation to prevent jittery movement
   let currentPosition;
   switch(currentDragTarget.value) {
     case 'notification':
@@ -293,7 +309,7 @@ const onDrag = (event) => {
   }
   
   // Apply smooth position update (linear interpolation)
-  const smoothFactor = 0.85; // Lower for more smoothing, higher for more direct
+  const smoothFactor = 0.98; // Increased for more direct response
   
   const smoothedPosition = {
     x: currentPosition.x + (newPosition.x - currentPosition.x) * smoothFactor,
@@ -315,11 +331,22 @@ const onDrag = (event) => {
       statsPosition.value = smoothedPosition;
       break;
   }
+  
+  // Request another frame if still dragging
+  if (isDragging.value) {
+    animationFrameId.value = requestAnimationFrame(updatePosition);
+  }
 };
 
 // Stop dragging
 const stopDrag = () => {
   if (!isDragging.value) return;
+  
+  // Cancel any pending animation frame
+  if (animationFrameId.value) {
+    cancelAnimationFrame(animationFrameId.value);
+    animationFrameId.value = null;
+  }
   
   // Remove active class when dragging stops
   let targetElement;
@@ -349,8 +376,9 @@ const stopDrag = () => {
 
 <style scoped>
 .draggable {
-  @apply select-none transition-all duration-300 ease-in-out z-50 cursor-grab active:cursor-grabbing;
+  @apply select-none z-50 cursor-grab active:cursor-grabbing;
   will-change: transform, box-shadow;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .draggable:hover {
@@ -359,13 +387,12 @@ const stopDrag = () => {
 
 .draggable:active {
   @apply shadow-xl shadow-cyan-500/20 scale-[0.99] -translate-y-0.5;
-  transition-duration: 150ms;
+  transition-duration: 100ms;
 }
 
 .dragging {
   @apply shadow-xl shadow-cyan-500/25 scale-[1.02] -translate-y-1 z-[60];
-  transition-duration: 150ms;
-  transition-timing-function: ease-out;
+  transition: none !important;
 }
 
 /* Animation delay utilities */

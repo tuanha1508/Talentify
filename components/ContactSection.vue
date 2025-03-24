@@ -14,13 +14,16 @@
         </p>
         
         <div class="mt-10 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
-          <button class="modern-cta-button min-w-[180px] text-center flex items-center justify-center group">
-            Create Account
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
+          <button class="h-[48px] min-w-[200px] px-6 py-3 text-center flex items-center justify-center group rounded-xl bg-gradient-to-br from-indigo-700 via-purple-700 to-fuchsia-800 border-2 border-indigo-500/20 hover:border-indigo-400/30 text-white font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-700/30 overflow-hidden relative">
+            <span class="relative z-10 flex items-center">
+              Create Account
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
-          <button class="btn-outline min-w-[180px] text-center flex items-center justify-center group">
+          <button class="btn-outline h-[48px] min-w-[200px] px-6 py-3 text-center flex items-center justify-center group">
             Schedule Demo
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-2 opacity-70 group-hover:translate-x-1 transition-transform duration-300">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
