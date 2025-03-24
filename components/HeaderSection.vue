@@ -2,11 +2,11 @@
   <header
     ref="header"
     :class="[
-      'fixed left-0 right-0 top-0 z-50 w-full border-b border-dark-800/40 backdrop-blur-md transition-all duration-300',
+      'fixed left-0 right-0 top-0 z-50 w-full backdrop-blur-md transition-all duration-300',
       { 'translate-y-0 opacity-100 shadow-md': visible, 'pointer-events-none -translate-y-full opacity-0': !visible }
     ]"
   >
-    <div class="container mx-auto flex h-12 items-center justify-between px-4 md:px-8 bg-gradient-to-r from-dark-950/90 via-dark-900/90 to-dark-950/90 border-b border-white/5">
+    <div class="container mx-auto flex h-12 items-center justify-between px-4 md:px-8 bg-transparent">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center group cursor-pointer">
         <div class="mr-1 h-10 w-10 flex items-center relative group">
@@ -18,31 +18,35 @@
 
       <!-- Main Navigation -->
       <nav class="hidden items-center md:flex">
-        <ul class="flex space-x-8 font-display">
+        <ul class="flex items-center font-display">
           <li>
             <NuxtLink to="/" class="text-sm font-medium text-white hover:text-primary-300 transition-all duration-200 relative group">
               Home
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </NuxtLink>
           </li>
+          <li class="mx-2 text-gray-500">-</li>
           <li>
             <a href="#features" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               Features
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
+          <li class="mx-2 text-gray-500">-</li>
           <li>
             <a href="#job-seekers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               Find Jobs
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
+          <li class="mx-2 text-gray-500">-</li>
           <li>
             <a href="#employers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               For Recruiters
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
             </a>
           </li>
+          <li class="mx-2 text-gray-500">-</li>
           <li>
             <a href="#contact" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               About
@@ -115,7 +119,7 @@
     <!-- Mobile Menu -->
     <div 
       v-show="isMobileMenuOpen" 
-      class="border-t border-dark-800/30 bg-dark-900/95 backdrop-blur-xl md:hidden animate-fadeSlideUp"
+      class="border-dark-800/30 bg-transparent backdrop-blur-xl md:hidden animate-fadeSlideUp"
     >
       <div class="container mx-auto px-4 py-4">
         <ul class="space-y-4">
