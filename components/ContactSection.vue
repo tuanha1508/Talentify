@@ -6,7 +6,7 @@
       <div class="mx-auto max-w-4xl text-center">
         <span class="linear-badge-blue mb-4 inline-block">Ready to Get Started?</span>
         <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-          Take Your <span class="text-primary-400">HR Process</span> to the Next Level
+          Take Your <span class="text-primary-400">HR Process</span> to the <br> Next Level
         </h2>
         <p class="mx-auto mt-6 max-w-2xl text-gray-400">
           Join thousands of companies and professionals already using our platform to streamline 
