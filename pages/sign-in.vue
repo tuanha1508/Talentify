@@ -9,12 +9,6 @@
       <div class="w-full max-w-md mx-auto px-4 mt-20">
         <div class="mx-auto">
           <div class="mb-5 text-center">
-            <NuxtLink to="/" class="inline-flex items-center text-xs text-primary-400 hover:text-primary-300 transition-colors mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3">
-                <path d="M19 12H5M12 19l-7-7 7-7"></path>
-              </svg>
-              Back to Home
-            </NuxtLink>
             <h1 class="mb-1 font-display text-2xl font-medium text-white">Welcome Back</h1>
             <p class="text-sm text-gray-400">Log in to access your account</p>
           </div>
@@ -88,8 +82,8 @@
                 <div key="social-buttons" class="flex justify-center items-center space-x-6 my-2 transition-all duration-300 ease-out opacity-100 transform translate-y-0">
                   <button 
                     type="button" 
-                    @click="handleSocialSignIn('google')"
-                    class="relative group p-2 rounded-full bg-dark-900/70 hover:bg-dark-800/80 text-gray-300 hover:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-indigo-500/20"
+                    @click="handleSocialSignUp('google')"
+                    class="text-gray-300 hover:text-white transition-all duration-200 transform hover:scale-110"
                     :disabled="socialLoading === 'google'"
                   >
                     <svg v-if="socialLoading === 'google'" class="h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -102,8 +96,7 @@
                       <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                     </svg>
-                    <span class="sr-only">Sign in with Google</span>
-                    <span class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 bg-gradient-to-r from-indigo-600/20 to-indigo-400/20 group-hover:opacity-100"></span>
+                    <span class="sr-only">Sign up with Google</span>
                   </button>
                   
                   <button 
@@ -167,7 +160,7 @@
                 <div key="signup-link" class="text-center transition-all duration-300 ease-out opacity-100 transform translate-y-0">
                   <p class="text-sm text-gray-400">
                     Don't have an account?
-                    <NuxtLink to="/sign-up" class="text-primary-400 hover:text-primary-300 no-underline inline-block transition-colors duration-200 hover:translate-x-0.5 transform">Sign Up</NuxtLink>
+                    <NuxtLink to="/sign-up" class="text-accent-green font-medium hover:text-accent-green/80 no-underline inline-block transition-colors duration-200 hover:translate-x-0.5 transform">Sign Up</NuxtLink>
                   </p>
                 </div>
               </div>
