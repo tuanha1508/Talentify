@@ -20,13 +20,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nuxt/ui": "3.0.1",
     "@pinia/nuxt": "^0.10.1",
     "@tanstack/vue-query": "^5.69.0",
+    "globby": "11.1.0",
     "nuxt": "^3.10.2",
     "pinia": "^3.0.1",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "globby": "11.1.0"
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.2",

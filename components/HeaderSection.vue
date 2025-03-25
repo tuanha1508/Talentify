@@ -48,10 +48,17 @@
           </li>
           <li class="mx-2 text-gray-500">-</li>
           <li>
-            <a href="#contact" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
+            <NuxtLink to="/pricing" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
+              Pricing
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+            </NuxtLink>
+          </li>
+          <li class="mx-2 text-gray-500">-</li>
+          <li>
+            <NuxtLink to="/about" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
               About
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
-            </a>
+            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -136,7 +143,10 @@
             <a href="#employers" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">For Recruiters</a>
           </li>
           <li>
-            <a href="#contact" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">About</a>
+            <NuxtLink to="/pricing" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Pricing</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/about" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">About</NuxtLink>
           </li>
           <li class="border-t border-dark-800/30 pt-4">
             <NuxtLink to="/sign-in" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white no-underline pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Sign In</NuxtLink>

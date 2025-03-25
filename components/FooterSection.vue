@@ -41,7 +41,7 @@
               <a href="#features" class="text-gray-300 transition-colors hover:text-primary-400">Features</a>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Pricing</a>
+              <NuxtLink to="/pricing" class="text-gray-300 transition-colors hover:text-primary-400">Pricing</NuxtLink>
             </li>
             <li>
               <a href="#job-seekers" class="text-gray-300 transition-colors hover:text-primary-400">For Job Seekers</a>
@@ -82,7 +82,7 @@
           <h3 class="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-400">Company</h3>
           <ul class="space-y-3">
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">About Us</a>
+              <NuxtLink to="/about" class="text-gray-300 transition-colors hover:text-primary-400">About Us</NuxtLink>
             </li>
             <li>
               <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Careers</a>
