@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BackgroundVideo from '~/components/BackgroundVideo.vue';
 import HeaderSection from '~/components/HeaderSection.vue';
 import { onMounted, onBeforeUnmount } from 'vue';
@@ -30,10 +30,13 @@ useHead({
 });
 
 // Setup and cleanup event listeners
-const setupEventListeners = () => {
+const setupEventListeners = (): void => {
   // Smooth scroll to anchors
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', handleAnchorClick);
+    anchor.addEventListener('click', (e: Event) => {
+      const element = e.currentTarget as HTMLAnchorElement;
+      handleAnchorClick(e, element);
+    });
   });
 
   // Apply entrance animations to sections when they become visible
@@ -41,12 +44,12 @@ const setupEventListeners = () => {
 };
 
 // Handle anchor clicks
-const handleAnchorClick = function(e) {
+const handleAnchorClick = (e: Event, element: HTMLAnchorElement): void => {
   e.preventDefault();
-  const targetId = this.getAttribute('href');
-  if (targetId === '#') return;
+  const targetId = element.getAttribute('href');
+  if (!targetId || targetId === '#') return;
   
-  const targetElement = document.querySelector(targetId);
+  const targetElement = document.querySelector(targetId) as HTMLElement;
   if (targetElement) {
     window.scrollTo({
       top: targetElement.offsetTop - 60, // Offset for header
@@ -62,7 +65,7 @@ const handleAnchorClick = function(e) {
 };
 
 // Initialize IntersectionObserver for sections
-const initSectionObserver = () => {
+const initSectionObserver = (): void => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -86,7 +89,10 @@ onMounted(() => {
 // Cleanup
 onBeforeUnmount(() => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.removeEventListener('click', handleAnchorClick);
+    anchor.removeEventListener('click', (e: Event) => {
+      const element = e.currentTarget as HTMLAnchorElement;
+      handleAnchorClick(e, element);
+    });
   });
 });
 </script>

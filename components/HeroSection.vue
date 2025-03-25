@@ -149,27 +149,36 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+// Define types for the positions
+interface Position {
+  x: number;
+  y: number;
+}
+
 // Elements refs
-const notificationElement = ref(null);
-const userCardElement = ref(null);
-const jobRecsElement = ref(null);
-const statsElement = ref(null);
+const notificationElement = ref<HTMLElement | null>(null);
+const userCardElement = ref<HTMLElement | null>(null);
+const jobRecsElement = ref<HTMLElement | null>(null);
+const statsElement = ref<HTMLElement | null>(null);
+
+// Define type for draggable elements
+type DragTarget = 'notification' | 'userCard' | 'jobRecs' | 'stats' | null;
 
 // Positions for all draggable elements
-const notificationPosition = ref({ x: 0, y: 0 });
-const userCardPosition = ref({ x: 0, y: 0 });
-const jobRecsPosition = ref({ x: 0, y: 0 });
-const statsPosition = ref({ x: 0, y: 0 });
+const notificationPosition = ref<Position>({ x: 0, y: 0 });
+const userCardPosition = ref<Position>({ x: 0, y: 0 });
+const jobRecsPosition = ref<Position>({ x: 0, y: 0 });
+const statsPosition = ref<Position>({ x: 0, y: 0 });
 
 // Dragging state
-const isDragging = ref(false);
-const currentDragTarget = ref(null);
-const offset = ref({ x: 0, y: 0 });
-const lastMousePosition = ref({ x: 0, y: 0 });
-const animationFrameId = ref(null);
+const isDragging = ref<boolean>(false);
+const currentDragTarget = ref<DragTarget>(null);
+const offset = ref<Position>({ x: 0, y: 0 });
+const lastMousePosition = ref<Position>({ x: 0, y: 0 });
+const animationFrameId = ref<number | null>(null);
 
 // Initialize element positions
 onMounted(() => {
@@ -213,14 +222,14 @@ onUnmounted(() => {
 });
 
 // Start dragging and calculate offset
-const startDrag = (event, target) => {
+const startDrag = (event: MouseEvent | TouchEvent, target: DragTarget) => {
   isDragging.value = true;
   currentDragTarget.value = target;
   
-  const clientX = event.clientX || (event.touches && event.touches[0].clientX);
-  const clientY = event.clientY || (event.touches && event.touches[0].clientY);
+  const clientX = 'clientX' in event ? event.clientX : (event.touches && event.touches[0].clientX);
+  const clientY = 'clientY' in event ? event.clientY : (event.touches && event.touches[0].clientY);
   
-  let currentPosition;
+  let currentPosition: Position = { x: 0, y: 0 };
   switch(target) {
     case 'notification':
       currentPosition = notificationPosition.value;
@@ -242,7 +251,7 @@ const startDrag = (event, target) => {
   };
   
   // Add active class for better visual feedback during dragging
-  let targetElement;
+  let targetElement: HTMLElement | null = null;
   switch(target) {
     case 'notification':
       targetElement = notificationElement.value;
@@ -266,11 +275,11 @@ const startDrag = (event, target) => {
 };
 
 // Handle drag movement
-const onDrag = (event) => {
+const onDrag = (event: MouseEvent | TouchEvent) => {
   if (!isDragging.value) return;
   
-  const clientX = event.clientX || (event.touches && event.touches[0].clientX);
-  const clientY = event.clientY || (event.touches && event.touches[0].clientY);
+  const clientX = 'clientX' in event ? event.clientX : (event.touches && event.touches[0].clientX);
+  const clientY = 'clientY' in event ? event.clientY : (event.touches && event.touches[0].clientY);
   
   // Store the mouse position for use in animation frame
   lastMousePosition.value = { x: clientX, y: clientY };
@@ -285,14 +294,14 @@ const onDrag = (event) => {
 const updatePosition = () => {
   animationFrameId.value = null;
   
-  if (!isDragging.value) return;
+  if (!isDragging.value || !currentDragTarget.value) return;
   
-  const newPosition = {
+  const newPosition: Position = {
     x: lastMousePosition.value.x - offset.value.x,
     y: lastMousePosition.value.y - offset.value.y
   };
   
-  let currentPosition;
+  let currentPosition: Position = { x: 0, y: 0 };
   switch(currentDragTarget.value) {
     case 'notification':
       currentPosition = notificationPosition.value;
@@ -311,7 +320,7 @@ const updatePosition = () => {
   // Apply smooth position update (linear interpolation)
   const smoothFactor = 0.98; // Increased for more direct response
   
-  const smoothedPosition = {
+  const smoothedPosition: Position = {
     x: currentPosition.x + (newPosition.x - currentPosition.x) * smoothFactor,
     y: currentPosition.y + (newPosition.y - currentPosition.y) * smoothFactor
   };
@@ -340,7 +349,7 @@ const updatePosition = () => {
 
 // Stop dragging
 const stopDrag = () => {
-  if (!isDragging.value) return;
+  if (!isDragging.value || !currentDragTarget.value) return;
   
   // Cancel any pending animation frame
   if (animationFrameId.value) {
@@ -349,7 +358,7 @@ const stopDrag = () => {
   }
   
   // Remove active class when dragging stops
-  let targetElement;
+  let targetElement: HTMLElement | null = null;
   switch(currentDragTarget.value) {
     case 'notification':
       targetElement = notificationElement.value;

@@ -219,8 +219,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useHead } from 'nuxt/app';
+import { onMounted, nextTick } from 'vue';
 import FooterSection from '~/components/FooterSection.vue';
 
 // Set page metadata
@@ -231,6 +232,7 @@ useHead({
   ]
 });
 
+// @ts-ignore: Nuxt 3 macro
 // Eager load and define critical components to prevent lazy loading issues
 definePageMeta({
   // Preload key resources
@@ -239,6 +241,17 @@ definePageMeta({
     name: 'page',
     mode: 'out-in'
   }
+});
+
+// Ensure sections are visible on page load
+onMounted(async () => {
+  // Wait for next tick to ensure DOM is fully updated
+  await nextTick();
+  
+  // Force sections to be visible
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('section-visible');
+  });
 });
 </script>
 

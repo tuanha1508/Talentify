@@ -19,18 +19,20 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 
 // Define props for the component
-const props = defineProps({
-  videoSrc: {
-    type: String,
-    default: '/videos/dark_theme_video.mp4'
-  }
-});
+interface Props {
+  videoSrc?: string;
+}
 
-const videoElement = ref(null);
+// Define props with defaults
+const props = withDefaults(defineProps<Props>(), {
+  videoSrc: '/videos/dark_theme_video.mp4'
+})
+
+const videoElement = ref<HTMLVideoElement | null>(null);
 
 // Log when component mounts to debug
 onMounted(() => {
@@ -38,7 +40,7 @@ onMounted(() => {
 });
 
 // Event handlers for video element
-const handleVideoError = (error) => {
+const handleVideoError = (error: Event) => {
   console.error('Video loading error:', error);
   console.error('Attempted to load video from:', props.videoSrc);
 };

@@ -157,27 +157,27 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
 // Header state
-const header = ref(null);
-const visible = ref(true);
-const lastScrollPosition = ref(0);
+const header = ref<HTMLElement | null>(null);
+const visible = ref<boolean>(true);
+const lastScrollPosition = ref<number>(0);
 const scrollThreshold = 10;
 
 // Mobile menu state
-const isMobileMenuOpen = ref(false);
+const isMobileMenuOpen = ref<boolean>(false);
 
 // Close mobile menu when an item is clicked
-const handleNavClick = () => {
+const handleNavClick = (): void => {
   if (isMobileMenuOpen.value) {
     isMobileMenuOpen.value = false;
   }
 };
 
 // Handle scroll events to show/hide header
-const handleScroll = () => {
+const handleScroll = (): void => {
   const currentScrollPosition = window.scrollY;
   
   // Always show the header when at the top of the page
@@ -198,7 +198,7 @@ const handleScroll = () => {
     // Scrolling down - hide header
     visible.value = false;
     
-    // Close mobile menu when hiding header
+    // Close mobile menu when scrolling down
     if (isMobileMenuOpen.value) {
       isMobileMenuOpen.value = false;
     }
@@ -208,12 +208,11 @@ const handleScroll = () => {
   lastScrollPosition.value = currentScrollPosition;
 };
 
-// Setup scroll listener
+// Setup and cleanup scroll event listeners
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
 
-// Clean up
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });

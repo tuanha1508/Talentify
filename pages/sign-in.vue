@@ -172,23 +172,25 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
+type SocialProvider = 'google' | 'github' | 'facebook' | 'linkedin' | '';
+
 // Form state
-const email = ref('');
-const password = ref('');
-const rememberMe = ref(false);
-const isLoading = ref(false);
-const socialLoading = ref('');
+const email = ref<string>('');
+const password = ref<string>('');
+const rememberMe = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
+const socialLoading = ref<SocialProvider>('');
 
 // Form errors
-const emailError = ref('');
-const passwordError = ref('');
+const emailError = ref<string>('');
+const passwordError = ref<string>('');
 
 // Animation state
-const formReady = ref(false);
+const formReady = ref<boolean>(false);
 
 // Get router
 const router = useRouter();
@@ -199,86 +201,79 @@ onMounted(() => {
 });
 
 // Validate form
-const validateForm = () => {
-  let isValid = true;
+const validateForm = (): boolean => {
+  let valid = true;
   
-  // Validate email
+  // Reset errors
+  emailError.value = '';
+  passwordError.value = '';
+  
+  // Email validation
   if (!email.value) {
     emailError.value = 'Email is required';
-    isValid = false;
+    valid = false;
   } else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
     emailError.value = 'Please enter a valid email address';
-    isValid = false;
-  } else {
-    emailError.value = '';
+    valid = false;
   }
   
-  // Validate password
+  // Password validation
   if (!password.value) {
     passwordError.value = 'Password is required';
-    isValid = false;
-  } else {
-    passwordError.value = '';
+    valid = false;
+  } else if (password.value.length < 6) {
+    passwordError.value = 'Password must be at least 6 characters';
+    valid = false;
   }
   
-  return isValid;
+  return valid;
 };
 
-// Handle sign in
-const handleSignIn = async () => {
+// Handle sign in form submission
+const handleSignIn = async (): Promise<void> => {
   if (!validateForm()) return;
   
-  isLoading.value = true;
-  
   try {
-    // Simulate API call
+    isLoading.value = true;
+    
+    // Mock API call - would be replaced with a real API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    // In a real app, you would call your auth service here
-    // const response = await authService.signIn(email.value, password.value, rememberMe.value);
+    // Mock successful login
+    console.log('Login successful', { email: email.value, rememberMe: rememberMe.value });
     
-    console.log('User signed in:', {
-      email: email.value,
-      rememberMe: rememberMe.value
-    });
-    
-    // Redirect after successful login (replace with your actual dashboard path)
+    // Navigate to dashboard or home after login
     router.push('/');
-    
   } catch (error) {
-    console.error('Sign in error:', error);
+    console.error('Login error', error);
+    
+    // Show generic error
+    passwordError.value = 'Invalid email or password';
   } finally {
     isLoading.value = false;
   }
 };
 
 // Handle social sign in
-const handleSocialSignIn = async (provider) => {
-  if (socialLoading.value) return;
-  
-  socialLoading.value = provider;
-  
+const handleSocialSignIn = async (provider: SocialProvider): Promise<void> => {
   try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    socialLoading.value = provider;
     
-    // In a real app, you would call your auth service here
-    // const response = await authService.socialSignIn(provider);
+    // Mock API call - would be replaced with actual OAuth flow
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
-    console.log(`User signed in with ${provider}`);
+    // Mock successful login
+    console.log(`${provider} login successful`);
     
-    // Redirect after successful login
-    router.push('/dashboard');
-    
+    // Navigate to dashboard or home after login
+    router.push('/');
   } catch (error) {
-    console.error(`${provider} sign in error:`, error);
+    console.error(`${provider} login error`, error);
   } finally {
     socialLoading.value = '';
   }
 };
 
-// Go back to home page
-const goToHome = () => {
-  router.push('/');
-};
+// Social sign up is the same as sign in for demo purposes
+const handleSocialSignUp = handleSocialSignIn;
 </script> 
