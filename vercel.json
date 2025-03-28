@@ -1,4 +1,9 @@
 {
-  "framework": "nuxt",
-  "version": 2
+  "framework": "nuxtjs",
+  "version": 2,
+  "functions": {
+    "**/*": {
+      "runtime": "nodejs20.x"
+    }
+  }
 } 
