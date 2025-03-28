@@ -3,11 +3,5 @@
     "*": {
       "runtime": "nodejs18.x"
     }
-  },
-  "builds": [
-    {
-      "src": "nuxt.config.ts",
-      "use": "@nuxtjs/vercel-builder"
-    }
-  ]
+  }
 } 
