@@ -17,6 +17,12 @@ export default defineNuxtConfig({
     configPath: 'tailwind.config.js',
   },
 
+  // Nitro configuration for Vercel deployment
+  nitro: {
+    preset: 'vercel',
+    serveStatic: true
+  },
+
   app: {
     head: {
       title: 'Vortexify',
