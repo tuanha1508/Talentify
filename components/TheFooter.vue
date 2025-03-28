@@ -37,21 +37,21 @@
         <div>
           <h4 class="text-white font-semibold text-lg mb-4">For Job Seekers</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Browse Jobs</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Career Resources</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Resume Builder</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Salary Calculator</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Job Alerts</a></li>
+            <li><NuxtLink to="/browse-jobs" class="text-gray-400 hover:text-primary-500 transition-colors">Browse Jobs</NuxtLink></li>
+            <li><NuxtLink to="/career-resources" class="text-gray-400 hover:text-primary-500 transition-colors">Career Resources</NuxtLink></li>
+            <li><NuxtLink to="/resume-builder" class="text-gray-400 hover:text-primary-500 transition-colors">Resume Builder</NuxtLink></li>
+            <li><NuxtLink to="/salary-calculator" class="text-gray-400 hover:text-primary-500 transition-colors">Salary Calculator</NuxtLink></li>
+            <li><NuxtLink to="/job-alerts" class="text-gray-400 hover:text-primary-500 transition-colors">Job Alerts</NuxtLink></li>
           </ul>
         </div>
         
         <div>
           <h4 class="text-white font-semibold text-lg mb-4">For Employers</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Post a Job</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Browse Candidates</a></li>
+            <li><NuxtLink to="/post-job" class="text-gray-400 hover:text-primary-500 transition-colors">Post a Job</NuxtLink></li>
+            <li><NuxtLink to="/browse-candidates" class="text-gray-400 hover:text-primary-500 transition-colors">Browse Candidates</NuxtLink></li>
+            <li><NuxtLink to="/pricing" class="text-gray-400 hover:text-primary-500 transition-colors">Pricing Plans</NuxtLink></li>
             <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Recruiting Solutions</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Pricing Plans</a></li>
             <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Enterprise Solutions</a></li>
           </ul>
         </div>
@@ -59,7 +59,7 @@
         <div>
           <h4 class="text-white font-semibold text-lg mb-4">Company</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">About Us</a></li>
+            <li><NuxtLink to="/about" class="text-gray-400 hover:text-primary-500 transition-colors">About Us</NuxtLink></li>
             <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Our Team</a></li>
             <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Contact Us</a></li>
             <li><a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">Privacy Policy</a></li>
@@ -73,4 +73,8 @@
       </div>
     </div>
   </footer>
-</template> 
+</template>
+
+<script setup>
+// Add any component logic here if needed
+</script> 

@@ -60,19 +60,19 @@
           <h3 class="mb-5 text-sm font-semibold uppercase tracking-wider text-gray-400">Resources</h3>
           <ul class="space-y-3">
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Blog</a>
+              <NuxtLink to="/browse-jobs" class="text-gray-300 transition-colors hover:text-primary-400">Browse Jobs</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Documentation</a>
+              <NuxtLink to="/career-resources" class="text-gray-300 transition-colors hover:text-primary-400">Career Resources</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Help Center</a>
+              <NuxtLink to="/resume-builder" class="text-gray-300 transition-colors hover:text-primary-400">Resume Builder</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">API Reference</a>
+              <NuxtLink to="/salary-calculator" class="text-gray-300 transition-colors hover:text-primary-400">Salary Calculator</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Community</a>
+              <NuxtLink to="/job-alerts" class="text-gray-300 transition-colors hover:text-primary-400">Job Alerts</NuxtLink>
             </li>
           </ul>
         </div>
@@ -85,16 +85,19 @@
               <NuxtLink to="/about" class="text-gray-300 transition-colors hover:text-primary-400">About Us</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Careers</a>
+              <NuxtLink to="/browse-candidates" class="text-gray-300 transition-colors hover:text-primary-400">Browse Candidates</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/post-job" class="text-gray-300 transition-colors hover:text-primary-400">Post Job</NuxtLink>
             </li>
             <li>
               <a href="#contact" class="text-gray-300 transition-colors hover:text-primary-400">Contact</a>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Privacy Policy</a>
+              <NuxtLink to="/sign-in" class="text-gray-300 transition-colors hover:text-primary-400">Sign In</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Terms of Service</a>
+              <NuxtLink to="/sign-up" class="text-gray-300 transition-colors hover:text-primary-400">Sign Up</NuxtLink>
             </li>
           </ul>
         </div>

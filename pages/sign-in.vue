@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 flex flex-col overflow-hidden bg-dark-950/60 backdrop-blur-sm">
+  <div class="min-h-screen flex flex-col bg-dark-950/60 backdrop-blur-sm">
     <Transition
       appear
       enter-active-class="transition duration-300 ease-out"

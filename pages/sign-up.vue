@@ -1,20 +1,47 @@
 <template>
-    <div class="fixed inset-0 flex flex-col overflow-hidden bg-dark-950/60 backdrop-blur-sm">
+    <div class="min-h-screen flex flex-col bg-dark-950/60 backdrop-blur-sm">
       <Transition
         appear
         enter-active-class="transition duration-300 ease-out"
         enter-from-class="opacity-0 scale-95"
         enter-to-class="opacity-100 scale-100"
       >
-        <div class="w-full max-w-md mx-auto px-4 mt-12">
+        <div class="w-full max-w-md mx-auto px-4 mt-8">
           <div class="mx-auto">
-            <div class="mb-4 text-center">
+            <div class="mb-3 text-center">
               <h1 class="mb-1 font-display text-2xl font-medium text-white">Create Your Account</h1>
               <p class="text-sm text-gray-400">Join our community of developers and recruiters</p>
             </div>
             
             <div class="rounded-lg border border-primary-800/40 bg-gradient-to-b from-surface/90 to-surface-raised/90 p-6 shadow-lg shadow-black/20 backdrop-blur-md relative overflow-hidden">
               <div class="absolute inset-0 bg-gradient-to-tr from-primary-800/5 via-transparent to-secondary-500/5 pointer-events-none"></div>
+              
+              <div key="user-type-selection" class="mb-2 transition-all duration-300 ease-out opacity-100 transform translate-y-0">
+                <h2 class="text-center text-sm font-medium text-white mb-1.5">I am a...</h2>
+                <div class="grid grid-cols-2 gap-2">
+                  <button 
+                    @click="selectUserType('job-seeker')" 
+                    class="p-1.5 rounded-lg border transition-all duration-200 flex flex-col items-center gap-0"
+                    :class="[userType === 'job-seeker' ? 'border-primary-500 bg-primary-500/10' : 'border-dark-800 bg-dark-800/40 hover:bg-dark-800/60']"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="[userType === 'job-seeker' ? 'text-primary-400' : 'text-gray-400']">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span :class="[userType === 'job-seeker' ? 'text-white' : 'text-gray-300']" class="text-xs">Job Seeker</span>
+                  </button>
+                  
+                  <button 
+                    @click="selectUserType('recruiter')" 
+                    class="p-1.5 rounded-lg border transition-all duration-200 flex flex-col items-center gap-0"
+                    :class="[userType === 'recruiter' ? 'border-primary-500 bg-primary-500/10' : 'border-dark-800 bg-dark-800/40 hover:bg-dark-800/60']"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="[userType === 'recruiter' ? 'text-primary-400' : 'text-gray-400']">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span :class="[userType === 'recruiter' ? 'text-white' : 'text-gray-300']" class="text-xs">Recruiter</span>
+                  </button>
+                </div>
+              </div>
               
               <div key="social-signup" class="mb-3 transition-all duration-300 ease-out opacity-100 transform translate-y-0">
                 <div class="flex justify-center items-center space-x-6 my-2">
@@ -196,13 +223,13 @@
                     key="submit-button"
                     type="submit" 
                     class="w-full flex justify-center py-2 px-4 bg-accent-green hover:bg-accent-green/90 text-white rounded-md text-sm font-medium shadow transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-green/20"
-                    :disabled="isLoading"
+                    :disabled="isLoading || !userType"
                   >
                     <svg v-if="isLoading" class="mr-2 h-4 w-4 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    {{ isLoading ? 'Creating Account...' : 'Sign Up' }}
+                    {{ isLoading ? 'Creating Account...' : 'Continue' }}
                   </button>
                 
                   <div key="signin-link" class="text-center transition-all duration-300 ease-out opacity-100 transform translate-y-0">
@@ -233,6 +260,7 @@
   const termsAccepted = ref(false);
   const isLoading = ref(false);
   const socialLoading = ref('');
+  const userType = ref('');
   
   // Form errors
   const firstNameError = ref('');
@@ -252,9 +280,20 @@
     formReady.value = true;
   });
   
+  // Select user type
+  const selectUserType = (type) => {
+    userType.value = type;
+  };
+  
   // Validate form
   const validateForm = () => {
     let isValid = true;
+    
+    // Validate user type selection
+    if (!userType.value) {
+      isValid = false;
+      return isValid;
+    }
     
     // Validate names
     if (!firstName.value.trim()) {
@@ -313,17 +352,25 @@
     
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Success! In a real app, you would save the user or token to storage
-      console.log('User registered:', {
+      // Create a user data object with all the form data
+      const userData = {
         firstName: firstName.value,
         lastName: lastName.value,
-        email: email.value
-      });
+        email: email.value,
+        userType: userType.value
+      };
       
-      // Redirect after successful registration
-      router.push('/');
+      // Store user data to be accessed by the specific registration pages
+      localStorage.setItem('registrationData', JSON.stringify(userData));
+      
+      // Redirect to the appropriate registration page based on user type
+      if (userType.value === 'job-seeker') {
+        router.push('/sign-up/job-seeker');
+      } else if (userType.value === 'recruiter') {
+        router.push('/sign-up/recruiter');
+      }
       
     } catch (error) {
       console.error('Sign up error:', error);
@@ -334,7 +381,7 @@
   
   // Handle social sign up
   const handleSocialSignUp = async (provider) => {
-    if (socialLoading.value) return;
+    if (socialLoading.value || !userType.value) return;
     
     socialLoading.value = provider;
     
@@ -345,10 +392,14 @@
       // In a real app, you would call your auth service here
       // const response = await authService.socialSignUp(provider);
       
-      console.log('Social sign up with:', provider);
+      console.log('Social sign up with:', provider, 'as', userType.value);
       
-      // Redirect after successful registration
-      router.push('/');
+      // Redirect based on user type
+      if (userType.value === 'job-seeker') {
+        router.push('/sign-up/job-seeker');
+      } else if (userType.value === 'recruiter') {
+        router.push('/sign-up/recruiter');
+      }
     } catch (error) {
       console.error(`${provider} sign up error:`, error);
     } finally {

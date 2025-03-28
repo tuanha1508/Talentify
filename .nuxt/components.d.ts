@@ -18,7 +18,6 @@ interface _GlobalComponents {
     'FeaturesSection': typeof import("../components/FeaturesSection.vue")['default']
     'FooterSection': typeof import("../components/FooterSection.vue")['default']
     'HeaderSection': typeof import("../components/HeaderSection.vue")['default']
-    'HeroOverlay': typeof import("../components/HeroOverlay.vue")['default']
     'HeroSection': typeof import("../components/HeroSection.vue")['default']
     'JobSeekersSection': typeof import("../components/JobSeekersSection.vue")['default']
     'TheFooter': typeof import("../components/TheFooter.vue")['default']
@@ -52,7 +51,6 @@ interface _GlobalComponents {
     'LazyFeaturesSection': LazyComponent<typeof import("../components/FeaturesSection.vue")['default']>
     'LazyFooterSection': LazyComponent<typeof import("../components/FooterSection.vue")['default']>
     'LazyHeaderSection': LazyComponent<typeof import("../components/HeaderSection.vue")['default']>
-    'LazyHeroOverlay': LazyComponent<typeof import("../components/HeroOverlay.vue")['default']>
     'LazyHeroSection': LazyComponent<typeof import("../components/HeroSection.vue")['default']>
     'LazyJobSeekersSection': LazyComponent<typeof import("../components/JobSeekersSection.vue")['default']>
     'LazyTheFooter': LazyComponent<typeof import("../components/TheFooter.vue")['default']>
@@ -92,7 +90,6 @@ export const EmployersSection: typeof import("../components/EmployersSection.vue
 export const FeaturesSection: typeof import("../components/FeaturesSection.vue")['default']
 export const FooterSection: typeof import("../components/FooterSection.vue")['default']
 export const HeaderSection: typeof import("../components/HeaderSection.vue")['default']
-export const HeroOverlay: typeof import("../components/HeroOverlay.vue")['default']
 export const HeroSection: typeof import("../components/HeroSection.vue")['default']
 export const JobSeekersSection: typeof import("../components/JobSeekersSection.vue")['default']
 export const TheFooter: typeof import("../components/TheFooter.vue")['default']
@@ -126,7 +123,6 @@ export const LazyEmployersSection: LazyComponent<typeof import("../components/Em
 export const LazyFeaturesSection: LazyComponent<typeof import("../components/FeaturesSection.vue")['default']>
 export const LazyFooterSection: LazyComponent<typeof import("../components/FooterSection.vue")['default']>
 export const LazyHeaderSection: LazyComponent<typeof import("../components/HeaderSection.vue")['default']>
-export const LazyHeroOverlay: LazyComponent<typeof import("../components/HeroOverlay.vue")['default']>
 export const LazyHeroSection: LazyComponent<typeof import("../components/HeroSection.vue")['default']>
 export const LazyJobSeekersSection: LazyComponent<typeof import("../components/JobSeekersSection.vue")['default']>
 export const LazyTheFooter: LazyComponent<typeof import("../components/TheFooter.vue")['default']>

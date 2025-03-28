@@ -1,8 +1,8 @@
 <template>
-  <div class="relative min-h-screen">
+  <div class="relative min-h-screen flex flex-col">
     <BackgroundVideo />
     <HeaderSection />
-    <main>
+    <main class="flex-grow">
       <NuxtLayout>
         <NuxtPage :key="$route.fullPath" />
       </NuxtLayout>
@@ -81,7 +81,7 @@ const initSectionObserver = (): void => {
   });
 };
 
-// Add smooth scrolling behavior
+// Ensure animations are initialized
 onMounted(() => {
   setupEventListeners();
 });

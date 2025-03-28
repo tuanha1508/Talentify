@@ -222,11 +222,14 @@
         </div>
       </div>
     </div>
+    
+    <FooterSection />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import FooterSection from '~/components/FooterSection.vue';
 
 // Pricing toggle state
 const isAnnual = ref(true);

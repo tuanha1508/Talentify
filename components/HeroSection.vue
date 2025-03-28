@@ -1,7 +1,7 @@
 <template>
-  <section class="relative min-h-screen overflow-hidden pt-8">
+  <section class="relative min-h-screen overflow-hidden pt-0">
     <!-- Main hero content and draggable elements -->
-    <div class="container relative z-10 flex min-h-screen flex-col items-center px-4 py-16 text-center md:px-8 pt-20">
+    <div class="container relative z-10 flex min-h-screen flex-col items-center px-4 py-16 text-center md:px-8 pt-8">
       <span class="linear-badge-blue mb-2 inline-block animate-fadeSlideUp opacity-0 delay-100">Future-Ready HR Platform</span>
       <h1 class="mb-5 max-w-4xl bg-gradient-to-r from-white via-secondary-300 to-gray-400 bg-clip-text bg-[length:200%_auto] animate-gradient-shift text-transparent">
         Streamline Your <span class="text-primary-400 relative inline-block animate-float">Talent Acquisition</span> Process
