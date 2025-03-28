@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "*": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "framework": "nuxt",
+  "version": 2
 } 
