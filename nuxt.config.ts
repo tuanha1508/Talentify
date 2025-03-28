@@ -19,8 +19,7 @@ export default defineNuxtConfig({
 
   // Nitro configuration for Vercel deployment
   nitro: {
-    preset: 'vercel',
-    serveStatic: true
+    preset: 'vercel-edge'
   },
 
   app: {
