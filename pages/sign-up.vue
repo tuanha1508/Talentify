@@ -31,7 +31,7 @@
                   </button>
                   
                   <button 
-                    @click="selectUserType('recruiter')" 
+                    @click="selectUserType('recruite')" 
                     class="p-1.5 rounded-lg border transition-all duration-200 flex flex-col items-center gap-0"
                     :class="[userType === 'recruiter' ? 'border-primary-500 bg-primary-500/10' : 'border-dark-800 bg-dark-800/40 hover:bg-dark-800/60']"
                   >
