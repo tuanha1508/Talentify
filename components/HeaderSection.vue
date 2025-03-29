@@ -20,44 +20,82 @@
       <nav class="hidden items-center md:flex">
         <ul class="flex items-center font-display">
           <li>
-            <NuxtLink to="/" class="text-sm font-medium text-white hover:text-primary-300 transition-all duration-200 relative group">
+            <NuxtLink to="/" :class="[
+              'text-sm font-medium transition-all duration-200 relative group',
+              route.path === '/' ? 'text-white active-link' : 'text-gray-400 hover:text-white'
+            ]">
               Home
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+              <span :class="[
+                'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white/30 to-white transition-all duration-300 rounded-full w-0 group-hover:w-full'
+              ]"></span>
             </NuxtLink>
           </li>
           <li class="mx-2 text-gray-500">-</li>
-          <li>
-            <a href="#features" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
+          <li class="relative group">
+            <div :class="[
+              'flex items-center text-sm font-medium transition-all duration-200 cursor-pointer relative',
+              route.path.startsWith('/features') ? 'text-white active-link' : 'text-gray-400 hover:text-white'
+            ]">
               Features
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
-            </a>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1 transition-transform duration-300 group-hover:rotate-180">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+              <span :class="[
+                'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white/30 to-white transition-all duration-300 rounded-full w-0 group-hover:w-full'
+              ]"></span>
+            </div>
+            <!-- Dropdown menu -->
+            <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0">
+              <div class="p-2 bg-dark-800/95 backdrop-blur-md rounded-xl shadow-xl border border-dark-700/50">
+                <NuxtLink to="/features" :class="[
+                  'block px-4 py-2 text-sm hover:bg-dark-700/50 rounded-lg transition duration-200',
+                  route.path === '/features' ? 'text-white bg-dark-700/30' : 'text-gray-300 hover:text-white'
+                ]">
+                  All Features
+                </NuxtLink>
+                <NuxtLink to="/features/smart-job-matching" :class="[
+                  'block px-4 py-2 text-sm hover:bg-dark-700/50 rounded-lg transition duration-200',
+                  route.path === '/features/smart-job-matching' ? 'text-white bg-dark-700/30' : 'text-gray-300 hover:text-white'
+                ]">
+                  Smart Job Matching
+                </NuxtLink>
+                <NuxtLink to="/features/secure-hiring-process" :class="[
+                  'block px-4 py-2 text-sm hover:bg-dark-700/50 rounded-lg transition duration-200',
+                  route.path === '/features/secure-hiring-process' ? 'text-white bg-dark-700/30' : 'text-gray-300 hover:text-white'
+                ]">
+                  Secure Hiring Process
+                </NuxtLink>
+                <NuxtLink to="/features/advanced-analytics" :class="[
+                  'block px-4 py-2 text-sm hover:bg-dark-700/50 rounded-lg transition duration-200',
+                  route.path === '/features/advanced-analytics' ? 'text-white bg-dark-700/30' : 'text-gray-300 hover:text-white'
+                ]">
+                  Advanced Analytics
+                </NuxtLink>
+              </div>
+            </div>
           </li>
           <li class="mx-2 text-gray-500">-</li>
           <li>
-            <a href="#job-seekers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
-              Find Jobs
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
-            </a>
-          </li>
-          <li class="mx-2 text-gray-500">-</li>
-          <li>
-            <a href="#employers" @click="handleNavClick" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
-              For Recruiters
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
-            </a>
-          </li>
-          <li class="mx-2 text-gray-500">-</li>
-          <li>
-            <NuxtLink to="/pricing" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
+            <NuxtLink to="/pricing" :class="[
+              'text-sm font-medium transition-all duration-200 relative group',
+              route.path === '/pricing' ? 'text-white active-link' : 'text-gray-400 hover:text-white'
+            ]">
               Pricing
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+              <span :class="[
+                'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white/30 to-white transition-all duration-300 rounded-full w-0 group-hover:w-full'
+              ]"></span>
             </NuxtLink>
           </li>
           <li class="mx-2 text-gray-500">-</li>
           <li>
-            <NuxtLink to="/about" class="text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white relative group">
+            <NuxtLink to="/about" :class="[
+              'text-sm font-medium transition-all duration-200 relative group',
+              route.path === '/about' ? 'text-white active-link' : 'text-gray-400 hover:text-white'
+            ]">
               About
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+              <span :class="[
+                'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white/30 to-white transition-all duration-300 rounded-full w-0 group-hover:w-full'
+              ]"></span>
             </NuxtLink>
           </li>
         </ul>
@@ -66,13 +104,21 @@
       <!-- Controls -->
       <div class="flex items-center gap-2">
         <!-- Sign In Button -->
-        <NuxtLink to="/sign-in" class="mr-2 hidden text-sm font-medium text-gray-300 transition-all duration-200 hover:text-white relative group md:block">
+        <NuxtLink to="/sign-in" :class="[
+          'mr-2 hidden text-sm font-medium transition-all duration-200 relative group md:block',
+          route.path === '/sign-in' ? 'text-white active-link' : 'text-gray-300 hover:text-white'
+        ]">
           Sign In
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-white/30 to-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+          <span :class="[
+            'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-white/30 to-white transition-all duration-300 rounded-full w-0 group-hover:w-full'
+          ]"></span>
         </NuxtLink>
 
         <!-- Sign Up Button -->
-        <NuxtLink to="/sign-up" class="nav-button-no-float relative overflow-hidden rounded-xl pulse-button">
+        <NuxtLink to="/sign-up" :class="[
+          'nav-button-no-float relative overflow-hidden rounded-xl',
+          route.path === '/sign-up' ? 'pulse-button-active' : 'pulse-button'
+        ]">
           <span class="relative z-10 flex items-center shimmer-text">
             Sign Up
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5">
@@ -80,7 +126,10 @@
             </svg>
           </span>
           <span class="absolute inset-0 bg-[#111]"></span>
-          <span class="absolute inset-0 rounded-xl border border-white pulse-border slide-border"></span>
+          <span :class="[
+            'absolute inset-0 rounded-xl border border-white',
+            route.path === '/sign-up' ? 'pulse-border-active slide-border-active' : 'pulse-border slide-border'
+          ]"></span>
         </NuxtLink>
 
         <!-- Mobile Menu Toggle -->
@@ -131,25 +180,58 @@
       <div class="container mx-auto px-4 py-4">
         <ul class="space-y-4">
           <li>
-            <NuxtLink to="/" @click="handleNavClick" class="block text-sm text-white hover:text-primary-400 transition-all duration-200 pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Home</NuxtLink>
+            <NuxtLink to="/" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">Home</NuxtLink>
           </li>
           <li>
-            <a href="#features" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Features</a>
+            <NuxtLink to="/features" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/features' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">Features</NuxtLink>
+          </li>
+          <li class="ml-4">
+            <NuxtLink to="/features/smart-job-matching" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/features/smart-job-matching' ? 'text-white border-primary-400 pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">
+              <span class="text-primary-400">•</span> Smart Job Matching
+            </NuxtLink>
+          </li>
+          <li class="ml-4">
+            <NuxtLink to="/features/secure-hiring-process" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/features/secure-hiring-process' ? 'text-white border-secondary-400 pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">
+              <span class="text-secondary-400">•</span> Secure Hiring Process
+            </NuxtLink>
+          </li>
+          <li class="ml-4">
+            <NuxtLink to="/features/advanced-analytics" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/features/advanced-analytics' ? 'text-white border-accent-purple pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">
+              <span class="text-accent-purple">•</span> Advanced Analytics
+            </NuxtLink>
           </li>
           <li>
-            <a href="#job-seekers" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Find Jobs</a>
+            <NuxtLink to="/pricing" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/pricing' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">Pricing</NuxtLink>
           </li>
           <li>
-            <a href="#employers" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">For Recruiters</a>
-          </li>
-          <li>
-            <NuxtLink to="/pricing" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Pricing</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/about" @click="handleNavClick" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">About</NuxtLink>
+            <NuxtLink to="/about" @click="handleNavClick" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50',
+              route.path === '/about' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">About</NuxtLink>
           </li>
           <li class="border-t border-dark-800/30 pt-4">
-            <NuxtLink to="/sign-in" class="block text-sm text-gray-400 transition-all duration-200 hover:text-white no-underline pl-2 border-l-2 border-transparent hover:border-white hover:pl-3 rounded-r-md hover:bg-dark-800/50">Sign In</NuxtLink>
+            <NuxtLink to="/sign-in" :class="[
+              'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50 no-underline',
+              route.path === '/sign-in' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
+            ]">Sign In</NuxtLink>
           </li>
         </ul>
       </div>
@@ -159,6 +241,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRoute } from 'nuxt/app';
+
+// Get current route
+const route = useRoute();
 
 // Header state
 const header = ref<HTMLElement | null>(null);
@@ -229,6 +315,31 @@ onUnmounted(() => {
 
 .btn-xs {
   @apply rounded-lg px-3 py-1 text-xs font-medium;
+}
+
+.active-link {
+  @apply text-white relative;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.pulse-button-active {
+  @apply bg-primary-900/80;
+  animation: pulse-shadow 2s infinite;
+}
+
+.pulse-border-active {
+  @apply border-primary-400;
+  animation: pulse-border 2s infinite;
+}
+
+.slide-border-active {
+  animation: slide-border 2s infinite;
+}
+
+@keyframes pulse-shadow {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
 }
 
 /* All modern-nav-button styles have been moved to main.css */

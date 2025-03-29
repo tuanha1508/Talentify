@@ -52,7 +52,7 @@ const handleAnchorClick = (e: Event, element: HTMLAnchorElement): void => {
   const targetElement = document.querySelector(targetId) as HTMLElement;
   if (targetElement) {
     window.scrollTo({
-      top: targetElement.offsetTop - 60, // Offset for header
+      top: targetElement.offsetTop - 80, // Increased offset for header from 60 to 80
       behavior: 'smooth'
     });
     

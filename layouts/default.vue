@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col bg-dark-900">
     <!-- Header is now in app.vue -->
-    <main class="flex-grow pt-16">
+    <main class="flex-grow">
       <slot />
     </main>
   </div>

@@ -44,12 +44,6 @@
               <NuxtLink to="/pricing" class="text-gray-300 transition-colors hover:text-primary-400">Pricing</NuxtLink>
             </li>
             <li>
-              <a href="#job-seekers" class="text-gray-300 transition-colors hover:text-primary-400">For Job Seekers</a>
-            </li>
-            <li>
-              <a href="#employers" class="text-gray-300 transition-colors hover:text-primary-400">For Employers</a>
-            </li>
-            <li>
               <a href="#" class="text-gray-300 transition-colors hover:text-primary-400">Success Stories</a>
             </li>
           </ul>

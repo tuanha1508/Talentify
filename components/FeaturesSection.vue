@@ -12,6 +12,14 @@
           Our AI-powered platform offers smart solutions for both job seekers and employers, 
           making the hiring process more efficient and effective.
         </p>
+        <div class="mt-6">
+          <NuxtLink to="/features" class="inline-flex items-center text-primary-400 hover:text-primary-300 transition-all duration-300">
+            <span class="text-sm font-medium">Explore all features</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 h-4 w-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </NuxtLink>
+        </div>
       </div>
       
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
