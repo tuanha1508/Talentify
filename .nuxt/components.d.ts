@@ -22,6 +22,7 @@ interface _GlobalComponents {
     'JobSeekersSection': typeof import("../components/JobSeekersSection.vue")['default']
     'TheFooter': typeof import("../components/TheFooter.vue")['default']
     'ThemeToggle': typeof import("../components/ThemeToggle.vue")['default']
+    'UserStatus': typeof import("../components/UserStatus.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -55,6 +56,7 @@ interface _GlobalComponents {
     'LazyJobSeekersSection': LazyComponent<typeof import("../components/JobSeekersSection.vue")['default']>
     'LazyTheFooter': LazyComponent<typeof import("../components/TheFooter.vue")['default']>
     'LazyThemeToggle': LazyComponent<typeof import("../components/ThemeToggle.vue")['default']>
+    'LazyUserStatus': LazyComponent<typeof import("../components/UserStatus.vue")['default']>
     'LazyNuxtWelcome': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
     'LazyNuxtLayout': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
     'LazyNuxtErrorBoundary': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']>
@@ -94,6 +96,7 @@ export const HeroSection: typeof import("../components/HeroSection.vue")['defaul
 export const JobSeekersSection: typeof import("../components/JobSeekersSection.vue")['default']
 export const TheFooter: typeof import("../components/TheFooter.vue")['default']
 export const ThemeToggle: typeof import("../components/ThemeToggle.vue")['default']
+export const UserStatus: typeof import("../components/UserStatus.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -127,6 +130,7 @@ export const LazyHeroSection: LazyComponent<typeof import("../components/HeroSec
 export const LazyJobSeekersSection: LazyComponent<typeof import("../components/JobSeekersSection.vue")['default']>
 export const LazyTheFooter: LazyComponent<typeof import("../components/TheFooter.vue")['default']>
 export const LazyThemeToggle: LazyComponent<typeof import("../components/ThemeToggle.vue")['default']>
+export const LazyUserStatus: LazyComponent<typeof import("../components/UserStatus.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']>

@@ -247,161 +247,143 @@
     </div>
   </template>
   
-  <script setup>
-  import { ref, computed, onMounted } from 'vue';
+  <script setup lang="ts">
+  import { ref, computed } from 'vue';
   import { useRouter } from 'vue-router';
-  
-  // Form state
-  const firstName = ref('');
-  const lastName = ref('');
-  const email = ref('');
-  const password = ref('');
-  const confirmPassword = ref('');
-  const termsAccepted = ref(false);
-  const isLoading = ref(false);
-  const socialLoading = ref('');
-  const userType = ref('');
-  
-  // Form errors
-  const firstNameError = ref('');
-  const lastNameError = ref('');
-  const emailError = ref('');
-  const passwordError = ref('');
-  const confirmPasswordError = ref('');
-  
-  // Animation state
-  const formReady = ref(false);
-  
-  // Get router
+  import { useUserStore } from '~/stores/user';
+
+  type SocialProvider = 'google' | 'github' | 'facebook' | 'linkedin' | '';
+  type UserType = 'job-seeker' | 'recruiter' | '';
+
+  // Get store and router
+  const userStore = useUserStore();
   const router = useRouter();
-  
-  // Initialize form with animation
-  onMounted(() => {
-    formReady.value = true;
-  });
-  
-  // Select user type
-  const selectUserType = (type) => {
+
+  // Form state
+  const firstName = ref<string>('');
+  const lastName = ref<string>('');
+  const email = ref<string>('');
+  const password = ref<string>('');
+  const confirmPassword = ref<string>('');
+  const userType = ref<UserType>('');
+  const termsAccepted = ref<boolean>(false);
+  const socialLoading = ref<SocialProvider>('');
+
+  // Form errors
+  const firstNameError = ref<string>('');
+  const lastNameError = ref<string>('');
+  const emailError = ref<string>('');
+  const passwordError = ref<string>('');
+  const confirmPasswordError = ref<string>('');
+
+  // Get loading state from store
+  const isLoading = computed(() => userStore.isLoading);
+
+  // Handle user type selection
+  const selectUserType = (type: UserType): void => {
     userType.value = type;
   };
-  
+
   // Validate form
-  const validateForm = () => {
-    let isValid = true;
+  const validateForm = (): boolean => {
+    let valid = true;
     
-    // Validate user type selection
-    if (!userType.value) {
-      isValid = false;
-      return isValid;
-    }
+    // Reset errors
+    firstNameError.value = '';
+    lastNameError.value = '';
+    emailError.value = '';
+    passwordError.value = '';
+    confirmPasswordError.value = '';
     
-    // Validate names
-    if (!firstName.value.trim()) {
+    // Name validation
+    if (!firstName.value) {
       firstNameError.value = 'First name is required';
-      isValid = false;
-    } else {
-      firstNameError.value = '';
+      valid = false;
     }
     
-    if (!lastName.value.trim()) {
+    if (!lastName.value) {
       lastNameError.value = 'Last name is required';
-      isValid = false;
-    } else {
-      lastNameError.value = '';
+      valid = false;
     }
     
-    // Validate email
+    // Email validation
     if (!email.value) {
       emailError.value = 'Email is required';
-      isValid = false;
+      valid = false;
     } else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
       emailError.value = 'Please enter a valid email address';
-      isValid = false;
-    } else {
-      emailError.value = '';
+      valid = false;
     }
     
-    // Validate password
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    // Password validation
     if (!password.value) {
       passwordError.value = 'Password is required';
-      isValid = false;
-    } else if (!passwordRegex.test(password.value)) {
-      passwordError.value = 'Password must meet requirements';
-      isValid = false;
-    } else {
-      passwordError.value = '';
+      valid = false;
+    } else if (password.value.length < 8) {
+      passwordError.value = 'Password must be at least 8 characters';
+      valid = false;
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(password.value)) {
+      passwordError.value = 'Password must include uppercase, lowercase, number and special character';
+      valid = false;
     }
     
-    // Validate password confirmation
+    // Confirm password validation
     if (password.value !== confirmPassword.value) {
       confirmPasswordError.value = 'Passwords do not match';
-      isValid = false;
-    } else {
-      confirmPasswordError.value = '';
+      valid = false;
     }
     
-    return isValid;
+    return valid;
   };
-  
-  // Handle sign up
-  const handleSignUp = async () => {
+
+  // Handle sign up form submission
+  const handleSignUp = async (): Promise<void> => {
     if (!validateForm()) return;
     
-    isLoading.value = true;
-    
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Convert user type to the expected role format in the store
+      const role = userType.value === 'job-seeker' ? 'jobseeker' : 'employer' as 'jobseeker' | 'employer';
       
-      // Create a user data object with all the form data
       const userData = {
-        firstName: firstName.value,
-        lastName: lastName.value,
+        name: `${firstName.value} ${lastName.value}`,
         email: email.value,
-        userType: userType.value
+        role: role
       };
       
-      // Store user data to be accessed by the specific registration pages
-      localStorage.setItem('registrationData', JSON.stringify(userData));
+      const success = await userStore.register(userData, password.value);
       
-      // Redirect to the appropriate registration page based on user type
-      if (userType.value === 'job-seeker') {
-        router.push('/sign-up/job-seeker');
-      } else if (userType.value === 'recruiter') {
-        router.push('/sign-up/recruiter');
+      if (success) {
+        // Navigate to dashboard or home after registration
+        router.push('/');
+      } else {
+        // Handle registration error from the store
+        emailError.value = userStore.error || 'Registration failed';
       }
-      
     } catch (error) {
-      console.error('Sign up error:', error);
-    } finally {
-      isLoading.value = false;
+      console.error('Registration error', error);
+      emailError.value = 'An unexpected error occurred. Please try again.';
     }
   };
-  
+
   // Handle social sign up
-  const handleSocialSignUp = async (provider) => {
-    if (socialLoading.value || !userType.value) return;
+  const handleSocialSignUp = async (provider: SocialProvider): Promise<void> => {
+    if (socialLoading.value) return;
     
     socialLoading.value = provider;
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const success = await userStore.socialLogin(provider);
       
-      // In a real app, you would call your auth service here
-      // const response = await authService.socialSignUp(provider);
-      
-      console.log('Social sign up with:', provider, 'as', userType.value);
-      
-      // Redirect based on user type
-      if (userType.value === 'job-seeker') {
-        router.push('/sign-up/job-seeker');
-      } else if (userType.value === 'recruiter') {
-        router.push('/sign-up/recruiter');
+      if (success) {
+        // Navigate to dashboard or home after login
+        router.push('/');
+      } else {
+        // Handle login error from the store
+        emailError.value = userStore.error || `${provider} registration failed`;
       }
     } catch (error) {
-      console.error(`${provider} sign up error:`, error);
+      console.error(`${provider} registration error`, error);
+      emailError.value = `An unexpected error occurred with ${provider} registration`;
     } finally {
       socialLoading.value = '';
     }

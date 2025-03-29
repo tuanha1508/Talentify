@@ -82,7 +82,7 @@
                 <div key="social-buttons" class="flex justify-center items-center space-x-6 my-2 transition-all duration-300 ease-out opacity-100 transform translate-y-0">
                   <button 
                     type="button" 
-                    @click="handleSocialSignUp('google')"
+                    @click="handleSocialSignIn('google')"
                     class="text-gray-300 hover:text-white transition-all duration-200 transform hover:scale-110"
                     :disabled="socialLoading === 'google'"
                   >
@@ -173,32 +173,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '~/stores/user';
 
 type SocialProvider = 'google' | 'github' | 'facebook' | 'linkedin' | '';
+
+// Get store and router
+const userStore = useUserStore();
+const router = useRouter();
 
 // Form state
 const email = ref<string>('');
 const password = ref<string>('');
 const rememberMe = ref<boolean>(false);
-const isLoading = ref<boolean>(false);
 const socialLoading = ref<SocialProvider>('');
 
 // Form errors
 const emailError = ref<string>('');
 const passwordError = ref<string>('');
 
-// Animation state
-const formReady = ref<boolean>(false);
-
-// Get router
-const router = useRouter();
-
-// Initialize form with animation
-onMounted(() => {
-  formReady.value = true;
-});
+// Get loading state from store
+const isLoading = computed(() => userStore.isLoading);
 
 // Validate form
 const validateForm = (): boolean => {
@@ -234,46 +230,42 @@ const handleSignIn = async (): Promise<void> => {
   if (!validateForm()) return;
   
   try {
-    isLoading.value = true;
+    const success = await userStore.login(email.value, password.value, rememberMe.value);
     
-    // Mock API call - would be replaced with a real API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Mock successful login
-    console.log('Login successful', { email: email.value, rememberMe: rememberMe.value });
-    
-    // Navigate to dashboard or home after login
-    router.push('/');
+    if (success) {
+      // Navigate to dashboard or home after login
+      router.push('/');
+    } else {
+      // Handle login error from the store
+      emailError.value = userStore.error || 'Authentication failed';
+    }
   } catch (error) {
     console.error('Login error', error);
-    
-    // Show generic error
-    passwordError.value = 'Invalid email or password';
-  } finally {
-    isLoading.value = false;
+    emailError.value = 'An unexpected error occurred. Please try again.';
   }
 };
 
 // Handle social sign in
 const handleSocialSignIn = async (provider: SocialProvider): Promise<void> => {
+  if (socialLoading.value) return;
+  
+  socialLoading.value = provider;
+  
   try {
-    socialLoading.value = provider;
+    const success = await userStore.socialLogin(provider);
     
-    // Mock API call - would be replaced with actual OAuth flow
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Mock successful login
-    console.log(`${provider} login successful`);
-    
-    // Navigate to dashboard or home after login
-    router.push('/');
+    if (success) {
+      // Navigate to dashboard or home after login
+      router.push('/');
+    } else {
+      // Handle login error from the store
+      emailError.value = userStore.error || `${provider} login failed`;
+    }
   } catch (error) {
     console.error(`${provider} login error`, error);
+    emailError.value = `An unexpected error occurred with ${provider} login`;
   } finally {
     socialLoading.value = '';
   }
 };
-
-// Social sign up is the same as sign in for demo purposes
-const handleSocialSignUp = handleSocialSignIn;
 </script> 

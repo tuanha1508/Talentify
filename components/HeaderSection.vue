@@ -103,8 +103,13 @@
 
       <!-- Controls -->
       <div class="flex items-center gap-2">
+        <!-- Authenticated User Status -->
+        <div v-if="userStore.isAuthenticated">
+          <UserStatus />
+        </div>
+        
         <!-- Sign In Button -->
-        <NuxtLink to="/sign-in" :class="[
+        <NuxtLink v-else to="/sign-in" :class="[
           'mr-2 hidden text-sm font-medium transition-all duration-200 relative group md:block',
           route.path === '/sign-in' ? 'text-white active-link' : 'text-gray-300 hover:text-white'
         ]">
@@ -115,7 +120,7 @@
         </NuxtLink>
 
         <!-- Sign Up Button -->
-        <NuxtLink to="/sign-up" :class="[
+        <NuxtLink v-if="!userStore.isAuthenticated" to="/sign-up" :class="[
           'nav-button-no-float relative overflow-hidden rounded-xl',
           route.path === '/sign-up' ? 'pulse-button-active' : 'pulse-button'
         ]">
@@ -228,7 +233,12 @@
             ]">About</NuxtLink>
           </li>
           <li class="border-t border-dark-800/30 pt-4">
-            <NuxtLink to="/sign-in" :class="[
+            <div v-if="userStore.isAuthenticated" class="flex items-center justify-between">
+              <div class="p-2">
+                <UserStatus />
+              </div>
+            </div>
+            <NuxtLink v-else to="/sign-in" @click="handleNavClick" :class="[
               'block text-sm transition-all duration-200 pl-2 border-l-2 rounded-r-md hover:pl-3 hover:bg-dark-800/50 no-underline',
               route.path === '/sign-in' ? 'text-white border-white pl-3 bg-dark-800/30' : 'text-gray-400 hover:text-white border-transparent hover:border-white'
             ]">Sign In</NuxtLink>
@@ -242,9 +252,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'nuxt/app';
+import UserStatus from '~/components/UserStatus.vue';
+import { useUserStore } from '~/stores/user';
 
-// Get current route
+// Get current route and user store
 const route = useRoute();
+const userStore = useUserStore();
 
 // Header state
 const header = ref<HTMLElement | null>(null);
